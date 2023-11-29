@@ -41,6 +41,6 @@ public class Jumping : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return transform.Find("GroundCollider").GetComponent<GroundDetection>().IsGrounded();
+        return transform.Find("PlayerGroundCollider").GetComponent<GroundDetection>().IsGrounded();
     }
 }
