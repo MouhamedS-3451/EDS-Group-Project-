@@ -3,19 +3,25 @@ using UnityEngine;
 // Camera follows the player with specified offset and delay
 public class CameraScript : MonoBehaviour
 {
-    public Transform target;
-    public Vector2 offset;
-    
-    // How long it takes for the camera to catch up to the player
-    public float smoothTime = 0.25f;
+  public Transform target;
+  public Vector2 offset;
+  [SerializeField] float lookAheadX = 4;
 
-    private Vector3 velocity = Vector3.zero;
+  // How long it takes for the camera to catch up to the player
+  public float smoothTime = 0.25f;
 
-    void FixedUpdate()
-    {
-        Vector3 offset_3D = new Vector3(offset.x, offset.y, transform.position.z);
-        Vector3 targetPosition = target.position + offset_3D;
+  private Vector3 velocity = Vector3.zero;
 
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-    }
+  void FixedUpdate()
+  {
+    float playerDirection = GameObject.Find("Player").GetComponent<Movement>().direction;
+
+    float x = target.position.x + offset.x + lookAheadX * playerDirection;
+    float y = target.position.y + offset.y;
+    float z = transform.position.z;
+
+    Vector3 targetPosition = new(x, y, z);
+
+    transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+  }
 }

@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
   private float SpeedLeft = 0f;
   private float SpeedRight = 0f;
 
+  public float direction = 0f;
+
   void Awake()
   {
     body = GetComponent<Rigidbody2D>();
@@ -23,7 +25,7 @@ public class Movement : MonoBehaviour
 
   void Update()
   {
-    float direction = Input.GetAxisRaw("Horizontal");
+    direction = Input.GetAxisRaw("Horizontal");
 
     // Determine which direction to accelerate in
     // Direction is 1 if moving right, -1 if moving left, 0 if not moving
