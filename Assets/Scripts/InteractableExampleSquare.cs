@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableSquare : Interactable
+public class InteractableExampleSquare : Interactable
 {
   public override void InRangeAction()
   {
