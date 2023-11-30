@@ -3,6 +3,7 @@ using UnityEngine;
 public class Jumping : MonoBehaviour
 {
     public float jumpHeight = 7f;
+    public float jumpHeightMultiplier = 1f;
     public float gravityScaleJump = 5f;
     public float gravityScaleFall = 15f;
     public float jumpCancelFalloff = 2f;
@@ -20,7 +21,7 @@ public class Jumping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             body.gravityScale = gravityScaleJump;
-            float jumpForce = Mathf.Sqrt(jumpHeight * (Physics2D.gravity.y * body.gravityScale) * -2) * body.mass;
+            float jumpForce = Mathf.Sqrt(jumpHeight * jumpHeightMultiplier * (Physics2D.gravity.y * body.gravityScale) * -2) * body.mass;
             jumping = true;
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
