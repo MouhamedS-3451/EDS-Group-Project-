@@ -16,6 +16,7 @@ public class Jumping : MonoBehaviour
 
     void Update()
     {
+        // Jump if space is pressed and player is grounded
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             body.gravityScale = gravityScaleJump;
@@ -24,6 +25,7 @@ public class Jumping : MonoBehaviour
             body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
+        // Cancel jump if space is released
         if (jumping)
         {
             if (Input.GetKeyUp(KeyCode.Space))
