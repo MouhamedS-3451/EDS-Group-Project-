@@ -1,11 +1,11 @@
 using UnityEngine;
 
 // Camera follows the player with specified offset and delay
-public class CameraScript : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
   public Transform target;
   public Vector2 offset;
-  [SerializeField] float lookAheadX = 4;
+  public float lookAheadX = 4;
 
   // How long it takes for the camera to catch up to the player
   public float smoothTime = 0.25f;
@@ -14,7 +14,7 @@ public class CameraScript : MonoBehaviour
 
   void FixedUpdate()
   {
-    float playerDirection = GameObject.Find("Player").GetComponent<Movement>().direction;
+    float playerDirection = GameObject.Find("Player").GetComponent<Movement>().GetDirection();
 
     float x = target.position.x + offset.x + lookAheadX * playerDirection;
     float y = target.position.y + offset.y;
