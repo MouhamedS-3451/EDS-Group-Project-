@@ -46,6 +46,6 @@ public class Jumping : MonoBehaviour
   private bool IsGrounded()
   {
     if (!active) return false;
-    return transform.GetComponentInChildren<GroundDetection>().IsGrounded();
+    return transform.GetComponentInChildren<PlayerGroundDetection>().IsGrounded();
   }
 }

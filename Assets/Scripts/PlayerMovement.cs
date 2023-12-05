@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -27,6 +29,18 @@ public class Movement : MonoBehaviour
 
   void FixedUpdate()
   {
+
+    if (Input.GetAxisRaw("Vertical") == -1)
+    {
+      GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
+      Debug.Log(ground);
+      if (ground != null && ground.layer == 7)
+      {
+        StartCoroutine(DeactivatePlatform(ground));
+      }
+
+    }
+
     direction = Input.GetAxisRaw("Horizontal");
     if (!active) direction = 0;
 
@@ -96,4 +110,17 @@ public class Movement : MonoBehaviour
   {
     return direction;
   }
+  bool IsGrounded()
+  {
+    if (!active) return false;
+    return transform.GetComponentInChildren<PlayerGroundDetection>().IsGrounded();
+  }
+
+  IEnumerator DeactivatePlatform(GameObject ground)
+  {
+    ground.GetComponent<Collider2D>().enabled = false;
+    yield return new WaitForSeconds(0.5f);
+    ground.GetComponent<Collider2D>().enabled = true;
+  }
+
 }
