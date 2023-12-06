@@ -17,7 +17,8 @@ public class Movement : MonoBehaviour
   private SpriteRenderer sprite;
   private float SpeedLeft = 0f;
   private float SpeedRight = 0f;
-  private float direction = 0f;
+  private float directionX = 0f;
+  private float directionY = 0f;
   private float lastPosition;
 
   void Awake()
@@ -29,25 +30,25 @@ public class Movement : MonoBehaviour
 
   void FixedUpdate()
   {
-
-    if (Input.GetAxisRaw("Vertical") == -1)
+    if (active)
     {
-      GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
-      Debug.Log(ground);
-      if (ground != null && ground.layer == 7)
-      {
-        StartCoroutine(DeactivatePlatform(ground));
-      }
-
+      directionX = Input.GetAxisRaw("Horizontal");
+      directionY = Input.GetAxisRaw("Vertical");
     }
-
-    direction = Input.GetAxisRaw("Horizontal");
-    if (!active) direction = 0;
+    else
+    {
+      directionX = 0;
+      directionY = 0;
+    }
 
     // Determine which direction to accelerate in
     // Direction is 1 if moving right, -1 if moving left, 0 if not moving
-    switch (direction)
+    switch (directionX)
     {
+      case 0:
+        SpeedLeft = Decelerate(SpeedLeft);
+        SpeedRight = Decelerate(SpeedRight);
+        break;
       case 1:
         sprite.flipX = false;
         SpeedRight = Accelerate(SpeedRight);
@@ -58,10 +59,16 @@ public class Movement : MonoBehaviour
         SpeedLeft = Accelerate(SpeedLeft);
         SpeedRight = Decelerate(SpeedRight);
         break;
-      case 0:
-        SpeedLeft = Decelerate(SpeedLeft);
-        SpeedRight = Decelerate(SpeedRight);
-        break;
+    }
+
+    if (directionY == -1)
+    {
+      Debug.Log("Player is pressing down");
+      GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
+      if (ground != null && ground.layer == 7)
+      {
+        StartCoroutine(DeactivatePlatform(ground));
+      }
     }
 
     float velocity = -1 * SpeedLeft + SpeedRight;
@@ -102,13 +109,13 @@ public class Movement : MonoBehaviour
   {
     float current_speed = (body.position.x - lastPosition) / Time.deltaTime;
 
-    if (current_speed != 0) sprite.transform.eulerAngles = Vector3.forward * leanDegree * -1 * direction;
+    if (current_speed != 0) sprite.transform.eulerAngles = Vector3.forward * leanDegree * -1 * directionX;
     else sprite.transform.eulerAngles = Vector3.forward * 0;
   }
 
-  public float GetDirection()
+  public float GetDirectionX()
   {
-    return direction;
+    return directionX;
   }
   bool IsGrounded()
   {
