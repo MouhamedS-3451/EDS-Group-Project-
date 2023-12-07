@@ -206,7 +206,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 172393048}
   m_Layer: 7
   m_Name: Foliage2
-  m_TagString: Toggleable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,7 +371,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a75a68d4a5dd3674f8ad38216b7068c8, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 298191103}
   - component: {fileID: 298191102}
   - component: {fileID: 298191101}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: checkpoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 333436369}
   m_Layer: 7
   m_Name: Foliage1
-  m_TagString: Untagged
+  m_TagString: Toggleable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1055,7 +1055,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a75a68d4a5dd3674f8ad38216b7068c8, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 417246050}
   m_Layer: 7
   m_Name: Foliage3
-  m_TagString: Untagged
+  m_TagString: Toggleable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1205,7 +1205,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: d22ac7a9a7c8f2e449c36c3c2fb913eb, type: 3}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1616,7 +1616,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: d22ac7a9a7c8f2e449c36c3c2fb913eb, type: 3}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1661,6 +1661,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1711,7 +1712,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 12.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1801,7 +1802,22 @@ MonoBehaviour:
   target: {fileID: 1588488489}
   offset: {x: 0, y: 0}
   lookAheadX: 4
-  smoothTime: 0.25
+  PosSmoothTime: 0.25
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c4944493c45d343bbc35f7c0eb77c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 519420031}
+  zoom: 0
+  zoomSmoothTime: 0.25
 --- !u!1 &570459249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,7 +1830,7 @@ GameObject:
   - component: {fileID: 570459253}
   - component: {fileID: 570459252}
   - component: {fileID: 570459251}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: PlayerGroundCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1961,7 +1977,7 @@ GameObject:
   - component: {fileID: 599861076}
   - component: {fileID: 599861078}
   - component: {fileID: 599861079}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: SquareInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,7 +2120,7 @@ GameObject:
   - component: {fileID: 609266024}
   - component: {fileID: 609266023}
   - component: {fileID: 609266022}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2247,7 +2263,7 @@ GameObject:
   - component: {fileID: 614339283}
   - component: {fileID: 614339285}
   - component: {fileID: 614339286}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2390,7 +2406,7 @@ GameObject:
   - component: {fileID: 771272081}
   - component: {fileID: 771272080}
   - component: {fileID: 771272079}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: checkpoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2536,7 +2552,7 @@ GameObject:
   - component: {fileID: 887842268}
   m_Layer: 7
   m_Name: Foliage7
-  m_TagString: Untagged
+  m_TagString: Toggleable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2621,7 +2637,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: d22ac7a9a7c8f2e449c36c3c2fb913eb, type: 3}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2814,7 +2830,7 @@ GameObject:
   - component: {fileID: 1078451212}
   - component: {fileID: 1078451211}
   - component: {fileID: 1078451210}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Circle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2982,7 +2998,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: d22ac7a9a7c8f2e449c36c3c2fb913eb, type: 3}
+  - {fileID: 2100000, guid: a75a68d4a5dd3674f8ad38216b7068c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3212,7 +3228,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: d22ac7a9a7c8f2e449c36c3c2fb913eb, type: 3}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3394,7 +3410,7 @@ GameObject:
   - component: {fileID: 1613090060}
   - component: {fileID: 1613090059}
   - component: {fileID: 1613090058}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ground (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3668,7 +3684,7 @@ GameObject:
   - component: {fileID: 1634890710}
   - component: {fileID: 1634890712}
   - component: {fileID: 1634890713}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ground (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3905,7 +3921,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a75a68d4a5dd3674f8ad38216b7068c8, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4074,7 +4090,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: d22ac7a9a7c8f2e449c36c3c2fb913eb, type: 3}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4118,7 +4134,7 @@ GameObject:
   - component: {fileID: 1796822097}
   - component: {fileID: 1796822100}
   - component: {fileID: 1796822099}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4186,7 +4202,7 @@ Transform:
   m_GameObject: {fileID: 1796822096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.78, y: 13.43, z: -1.4211758}
+  m_LocalPosition: {x: -9.65, y: 13.47, z: -1.4211758}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4213,6 +4229,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb27265268e8b1d4483478040a993ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1588488485}
+  cam: {fileID: 519420031}
+  foliageMaterial: {fileID: 2100000, guid: a75a68d4a5dd3674f8ad38216b7068c8, type: 2}
+  zoom: 20
+  growSpeed: 2.5
+  growthValue: 0.1
+  growMax: 1
 --- !u!61 &1796822100
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4400,7 +4423,7 @@ GameObject:
   - component: {fileID: 1884214478}
   - component: {fileID: 1884214480}
   - component: {fileID: 1884214477}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4674,7 +4697,7 @@ GameObject:
   - component: {fileID: 1988044472}
   - component: {fileID: 1988044474}
   - component: {fileID: 1988044475}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ground (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4826,7 +4849,7 @@ GameObject:
   - component: {fileID: 2004141557}
   m_Layer: 7
   m_Name: Foliage4
-  m_TagString: Toggleable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4930,7 +4953,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a75a68d4a5dd3674f8ad38216b7068c8, type: 2}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5010,7 +5033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
 --- !u!61 &2094312243
 BoxCollider2D:
   m_ObjectHideFlags: 0
