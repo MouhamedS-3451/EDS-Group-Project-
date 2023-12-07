@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.RenderGraphModule;
 
@@ -9,7 +10,6 @@ public class PlayerRespawn : MonoBehaviour
   public int currentCheckpoint = 0;
   public float delay = 1f;
   public float respawnDelay = 1f;
-  public float dissolveSpeed = 1f;
   private bool fadingOut = false;
   private bool fadingIn = false;
 
@@ -36,7 +36,6 @@ public class PlayerRespawn : MonoBehaviour
         fadingIn = false;
       }
     }
-    Debug.Log(fade);
     transform.Find("PlayerSpriteRenderer").GetComponent<SpriteRenderer>().material.SetFloat("_Fade", fade);
     //GetComponentInChildren<PlayerSpriteRenderer>().material.SetFloat("_Fade", fade);
   }

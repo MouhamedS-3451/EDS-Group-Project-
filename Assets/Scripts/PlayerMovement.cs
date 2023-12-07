@@ -63,7 +63,6 @@ public class Movement : MonoBehaviour
 
     if (directionY == -1)
     {
-      Debug.Log("Player is pressing down");
       GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
       if (ground != null && ground.layer == 7)
       {

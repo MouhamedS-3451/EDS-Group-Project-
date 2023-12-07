@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
   public float lookAheadX = 4;
 
   // How long it takes for the camera to catch up to the player
-  public float smoothTime = 0.25f;
+  public float PosSmoothTime = 0.25f;
 
   private Vector3 velocity = Vector3.zero;
 
@@ -22,6 +22,6 @@ public class CameraFollow : MonoBehaviour
 
     Vector3 targetPosition = new(x, y, z);
 
-    transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+    transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, PosSmoothTime);
   }
 }
