@@ -9,13 +9,23 @@ public class InteractableTree : Interactable
   [SerializeField] GameObject player;
   [SerializeField] Camera cam;
   [SerializeField] Material foliageMaterial;
+  [SerializeField] float bgStrength = 1;
   [SerializeField] private float zoom = 20f;
   [SerializeField] private float growSpeed = 10f;
   // Growth goes from 0 to 1
   [SerializeField] private float growthValue = 0f;
-  [SerializeField] private float growMax = 1f;
+  [SerializeField] private float growthMax = 1f;
   private bool isInteractable = true;
   private bool isGrowing = false;
+
+  public override void Interact()
+  {
+    // TODO: Check if player is allowed to interact
+    if (!isInteractable) return;
+    isGrowing = true;
+    isInteractable = false;
+    StartCoroutine(Coroutine());
+  }
 
   public void Awake()
   {
@@ -24,7 +34,15 @@ public class InteractableTree : Interactable
       if (child.tag.CompareTo("Toggleable") == 1) continue;
       child.GetComponent<SpriteRenderer>().material = foliageMaterial;
       child.GetComponent<SpriteRenderer>().material.SetFloat("_Cutoff_Height", growthValue);
-      child.GetComponent<BoxCollider2D>().enabled = false;
+
+      if (child.gameObject.layer == LayerMask.NameToLayer("Platform"))
+      {
+        child.GetComponent<BoxCollider2D>().enabled = false;
+      }
+      else
+      {
+        child.GetComponent<SpriteRenderer>().material.SetFloat("_Strength", bgStrength);
+      }
     }
   }
   // Update just gradually updates the growth value
@@ -33,23 +51,16 @@ public class InteractableTree : Interactable
     if (!isGrowing) return;
 
     growthValue += (Time.deltaTime / growSpeed);
-    if (growthValue >= growMax)
+    if (growthValue >= growthMax)
     {
       isGrowing = false;
-      growthValue = growMax;
+      growthValue = growthMax;
     }
     foreach (Transform child in transform)
     {
       if (child.tag.CompareTo("Toggleable") == 1) continue;
       child.GetComponent<SpriteRenderer>().material.SetFloat("_Cutoff_Height", growthValue);
     }
-  }
-  public override void Interact()
-  {
-    if (!isInteractable) return;
-    isGrowing = true;
-    isInteractable = false;
-    StartCoroutine(Coroutine());
   }
 
   private IEnumerator Coroutine()
@@ -80,6 +91,7 @@ public class InteractableTree : Interactable
     foreach (Transform child in transform)
     {
       if (child.tag.CompareTo("Toggleable") == 1) continue;
+      if (child.gameObject.layer != LayerMask.NameToLayer("Platform")) continue;
       isGrowing = true;
       child.GetComponent<BoxCollider2D>().enabled = true;
     }
