@@ -8,6 +8,8 @@ using UnityEngine;
 // Interactable objects need to have Layer set to "Interactable"
 public abstract class Interactable : MonoBehaviour
 {
+  public KeyCode InteractionKey { get; set; } = KeyCode.E;
+
   // Gets called once when player gets in range of object
   public virtual void InRangeAction() { }
 

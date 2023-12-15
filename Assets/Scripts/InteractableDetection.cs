@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class InteractableDetection : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class InteractableDetection : MonoBehaviour
   void Update()
   {
     // Call Interact()  if player is in range and presses interact key
-    if (interactable != null && Input.GetKeyDown(KeyCode.E))
+    if (interactable != null && Input.GetKeyDown(GetKey()))
     {
       interactable.GetComponent<Interactable>().Interact();
     }
@@ -36,5 +37,10 @@ public class InteractableDetection : MonoBehaviour
       other.gameObject.BroadcastMessage("OutOfRangeAction");
       interactable = null;
     }
+  }
+
+  private KeyCode GetKey()
+  {
+    return interactable.GetComponent<Interactable>().InteractionKey;
   }
 }
