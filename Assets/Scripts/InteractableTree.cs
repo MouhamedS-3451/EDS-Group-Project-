@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class InteractableTree : Interactable
@@ -13,8 +10,9 @@ public class InteractableTree : Interactable
   [SerializeField] private float zoom = 20f;
   [SerializeField] private float growSpeed = 10f;
   // Growth goes from 0 to 1
-  [SerializeField] private float growthValue = 0f;
-  [SerializeField] private float growthMax = 1f;
+  [SerializeField] private float growthValue;
+  [SerializeField] private float growthMax = 10f;
+  private float growthMin = 0f;
   private bool isInteractable = true;
   private bool isGrowing = false;
 
@@ -45,17 +43,13 @@ public class InteractableTree : Interactable
       }
     }
   }
-  // Update just gradually updates the growth value
+  // Update updates the growth value over time
   public void Update()
   {
     if (!isGrowing) return;
 
-    growthValue += (Time.deltaTime / growSpeed);
-    if (growthValue >= growthMax)
-    {
-      isGrowing = false;
-      growthValue = growthMax;
-    }
+    transform.GetComponent<Transition>().SmoothDamp(ref growthValue, growthMin, growthMax, growSpeed);
+    if (growthValue == growthMax) isGrowing = false;
     foreach (Transform child in transform)
     {
       if (child.tag.CompareTo("Toggleable") == 1) continue;
