@@ -6,7 +6,7 @@ public class Jumping : MonoBehaviour
   public float jumpHeight = 7f;
   public float jumpHeightMultiplier = 1f;
   public float gravityScaleJump = 5f;
-  public float gravityScaleFall = 15f;
+  private float gravityScaleFall;
   public float jumpCancelFalloff = 2f;
   private Rigidbody2D body;
   private bool jumping;
@@ -14,10 +14,12 @@ public class Jumping : MonoBehaviour
   void Start()
   {
     body = GetComponent<Rigidbody2D>();
+    gravityScaleFall = body.gravityScale;
   }
 
   void Update()
   {
+    //Debug.Log(jumping);
     // Jump if space is pressed and player is grounded
     if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
     {
@@ -47,5 +49,10 @@ public class Jumping : MonoBehaviour
   {
     if (!active) return false;
     return transform.GetComponentInChildren<PlayerGroundDetection>().IsGrounded();
+  }
+
+  public bool IsJumping()
+  {
+    return jumping;
   }
 }

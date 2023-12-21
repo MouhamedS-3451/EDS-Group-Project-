@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
 
   void FixedUpdate()
   {
-    float playerDirection = GameObject.Find("Player").GetComponent<Movement>().GetDirectionX();
+    float playerDirection = GameObject.Find("Player").GetComponent<PlayerMovement>().GetDirectionX();
 
     float x = target.position.x + offset.x + lookAheadX * playerDirection;
     float y = target.position.y + offset.y;

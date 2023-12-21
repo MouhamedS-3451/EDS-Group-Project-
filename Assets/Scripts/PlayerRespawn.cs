@@ -14,7 +14,6 @@ public class PlayerRespawn : MonoBehaviour
   private bool fadingIn = false;
 
   float fade = 1f;
-  [SerializeField] new GameObject camera;
 
   public void Update()
   {
@@ -37,7 +36,6 @@ public class PlayerRespawn : MonoBehaviour
       }
     }
     transform.Find("PlayerSpriteRenderer").GetComponent<SpriteRenderer>().material.SetFloat("_Fade", fade);
-    //GetComponentInChildren<PlayerSpriteRenderer>().material.SetFloat("_Fade", fade);
   }
   public void Respawn()
   {
@@ -46,9 +44,9 @@ public class PlayerRespawn : MonoBehaviour
 
   private IEnumerator RespawnCoroutine()
   {
-    float deceleration = GetComponent<Movement>().deceleration;
-    GetComponent<Movement>().deceleration = 25f;
-    GetComponent<Movement>().active = false;
+    float deceleration = GetComponent<PlayerMovement>().deceleration;
+    GetComponent<PlayerMovement>().deceleration = 25f;
+    GetComponent<PlayerMovement>().active = false;
     GetComponent<Jumping>().active = false;
     fadingOut = true;
 
@@ -59,8 +57,8 @@ public class PlayerRespawn : MonoBehaviour
 
     yield return new WaitForSeconds(respawnDelay);
 
-    GetComponent<Movement>().deceleration = deceleration;
-    GetComponent<Movement>().active = true;
+    GetComponent<PlayerMovement>().deceleration = deceleration;
+    GetComponent<PlayerMovement>().active = true;
     GetComponent<Jumping>().active = true;
 
   }

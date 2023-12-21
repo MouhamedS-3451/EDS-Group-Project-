@@ -6,12 +6,12 @@ public class InteractableJumpBoost : Interactable
 {
   [SerializeField] GameObject player;
   [SerializeField] float jumpBoostMultiplier = 2f;
-  [SerializeField] Sprite spriteDown;
+  [SerializeField] private Sprite spriteDown;
   private Sprite spriteUp;
 
   public void Awake()
   {
-    spriteUp = transform.GetComponentInParent<SpriteRenderer>().sprite;
+    spriteUp = transform.GetComponent<SpriteRenderer>().sprite;
     gameObject.SetActive(false);
   }
 

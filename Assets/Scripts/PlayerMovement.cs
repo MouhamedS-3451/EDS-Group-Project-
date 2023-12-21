@@ -2,10 +2,11 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
   public bool active = true;
   public float maxSpeed = 20f;
+  public float climbSpeed = 10f;
   public bool useAcceleration = true;
   public float acceleration = 50f;
   public bool useDeceleration = true;
@@ -20,6 +21,8 @@ public class Movement : MonoBehaviour
   private float directionX = 0f;
   private float directionY = 0f;
   private float lastPosition;
+  private bool onLadder = false;
+  private float gravityScale = 15f;
 
   void Awake()
   {
@@ -50,24 +53,31 @@ public class Movement : MonoBehaviour
         SpeedRight = Decelerate(SpeedRight);
         break;
       case 1:
-        sprite.flipX = false;
+        ChangeFacingDirection(directionX);
         SpeedRight = Accelerate(SpeedRight);
         SpeedLeft = Decelerate(SpeedLeft);
         break;
       case -1:
-        sprite.flipX = true;
+        ChangeFacingDirection(directionX);
         SpeedLeft = Accelerate(SpeedLeft);
         SpeedRight = Decelerate(SpeedRight);
         break;
     }
 
-    if (directionY == -1)
+    GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
+    if (ground != null && ground.layer == 7 && directionY == -1)
     {
-      GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
-      if (ground != null && ground.layer == 7)
-      {
-        StartCoroutine(DeactivatePlatform(ground));
-      }
+      StartCoroutine(FallThroughPlatform(ground));
+    }
+
+    if (onLadder && !IsJumping() && (!IsGrounded() || directionY != 0))
+    {
+      body.velocity = new Vector2(body.velocity.x, directionY * climbSpeed);
+      body.gravityScale = 0;
+    }
+    else
+    {
+      body.velocity = new Vector2(body.velocity.x, body.velocity.y);
     }
 
     float velocity = -1 * SpeedLeft + SpeedRight;
@@ -103,12 +113,31 @@ public class Movement : MonoBehaviour
     return speed;
   }
 
+  private void ChangeFacingDirection(float direction)
+  {
+    float x = transform.localScale.x;
+    float y = transform.localScale.y;
+    float z = transform.localScale.z;
+    if (direction == 1) x = Mathf.Abs(transform.localScale.x);
+    else if (direction == -1) x = -1 * Mathf.Abs(transform.localScale.x);
+
+    transform.localScale = new Vector3(x, y, z);
+  }
+
+  public void LookAtTarget(GameObject target, float distanceTreshold = 0f)
+  {
+    float Xdistance = target.transform.position.x - transform.position.x;
+    if (Mathf.Abs(Xdistance) < distanceTreshold) return;
+
+    if (Xdistance > 0) ChangeFacingDirection(1);
+    else if (Xdistance < 0) ChangeFacingDirection(-1);
+  }
   // Leans Forward when moving
   void Lean()
   {
     float current_speed = (body.position.x - lastPosition) / Time.deltaTime;
 
-    if (current_speed != 0) sprite.transform.eulerAngles = Vector3.forward * leanDegree * -1 * directionX;
+    if (current_speed != 0) sprite.transform.eulerAngles = -1 * directionX * leanDegree * Vector3.forward;
     else sprite.transform.eulerAngles = Vector3.forward * 0;
   }
 
@@ -116,13 +145,25 @@ public class Movement : MonoBehaviour
   {
     return directionX;
   }
+
+  public void SetOnLadder(bool onLadder)
+  {
+    this.onLadder = onLadder;
+    if (!onLadder) body.gravityScale = gravityScale;
+  }
+
   bool IsGrounded()
   {
     if (!active) return false;
     return transform.GetComponentInChildren<PlayerGroundDetection>().IsGrounded();
   }
 
-  IEnumerator DeactivatePlatform(GameObject ground)
+  bool IsJumping()
+  {
+    return transform.GetComponentInChildren<Jumping>().IsJumping();
+  }
+
+  IEnumerator FallThroughPlatform(GameObject ground)
   {
     ground.GetComponent<Collider2D>().enabled = false;
     yield return new WaitForSeconds(0.5f);

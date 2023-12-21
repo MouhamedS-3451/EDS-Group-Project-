@@ -40,5 +40,6 @@ Material:
     m_Floats:
     - _Cutoff_Height: 1
     - _Noise_Scale: 10
+    - _Strength: 1
     m_Colors: []
   m_BuildTextureStacks: []

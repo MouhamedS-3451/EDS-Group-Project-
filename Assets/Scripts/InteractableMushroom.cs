@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class InteractableMushroom : Interactable
 {
-  [SerializeField] private float growSpeed = 2.5f;
+  [SerializeField] private GameObject player;
+  [SerializeField] private float growTime = 2.5f;
   [SerializeField] private GameObject JumpBoostInteractable;
   private bool isInteractable = true;
   private bool isPlanted = false;
@@ -19,14 +20,15 @@ public class InteractableMushroom : Interactable
     minSize = transform.GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
     currentSize = minSize;
     transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
-    //InteractionKey = Inventory.mushroom.key;
+    InteractionKey = player.GetComponent<Inventory>().mushroomKey;
+    InteractionKey = KeyCode.Alpha3;
   }
 
   // Update mushroom scale
   public void Update()
   {
     if (!isGrowing) return;
-    transform.GetComponent<Transition>().SmoothDamp(ref currentSize, minSize, maxSize, growSpeed);
+    transform.GetComponent<Transition>().SmoothDamp(ref currentSize, minSize, maxSize, growTime);
     if (currentSize == maxSize) isGrowing = false;
     transform.GetComponentInChildren<SpriteRenderer>().transform.localScale = new Vector3(currentSize, currentSize, currentSize);
   }
@@ -34,21 +36,20 @@ public class InteractableMushroom : Interactable
   public override void Interact()
   {
     if (!isInteractable) return;
+    player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
 
     // Plant mushroom
-    // TODO: Check if player has mushroom
-    if (!isPlanted)
+    if (!isPlanted && player.GetComponent<Inventory>().mushroom)
     {
-      // If having mushrooms
       transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
-      //InteractionKey = Inverntory.bucket.key;
+      InteractionKey = player.GetComponent<Inventory>().mushroomKey;
+      InteractionKey = KeyCode.Alpha1;
       isPlanted = true;
-      return;
     }
     // Water mushroom
-    // TODO: Check if player has water
-    else
+    else if(isPlanted && player.GetComponent<Inventory>().water)
     {
+      player.GetComponent<Inventory>().UseBucket(growTime);
       isGrowing = true;
       isInteractable = false;
       StartCoroutine(Deactivate());
@@ -57,7 +58,7 @@ public class InteractableMushroom : Interactable
 
   private IEnumerator Deactivate()
   {
-    while (isGrowing) yield return null;
+    yield return new WaitForSeconds(growTime);
     gameObject.SetActive(false);
     JumpBoostInteractable.SetActive(true);
   }

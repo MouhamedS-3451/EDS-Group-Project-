@@ -10,14 +10,20 @@ public class PlayerGroundDetection : MonoBehaviour
   // Sets isGrounded = true if colliding with Object that has Layer "Ground"
   private void OnTriggerStay2D(Collider2D collider)
   {
-    isGrounded = (collider != null && ((((1 << collider.gameObject.layer) & groundLayer) != 0)));
-    if (isGrounded) ground = collider.gameObject;
+    if (collider != null && (((1 << collider.gameObject.layer) & groundLayer) != 0))
+    {
+      isGrounded = true;
+      ground = collider.gameObject;
+    }
   }
 
   private void OnTriggerExit2D(Collider2D collision)
   {
-    isGrounded = false;
-    ground = null;
+    if (collision != null && (((1 << collision.gameObject.layer) & groundLayer) != 0))
+    {
+      isGrounded = false;
+      ground = null;
+    }
   }
 
   public bool IsGrounded()

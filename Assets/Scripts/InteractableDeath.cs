@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class InteractableDeath : Interactable
 {
+  [SerializeField] private GameObject player;
   public override void InRangeAction()
   {
-    GameObject.Find("Player").GetComponent<PlayerRespawn>().Respawn();
+    player.GetComponent<PlayerRespawn>().Respawn();
   }
 }
