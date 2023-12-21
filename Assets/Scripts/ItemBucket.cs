@@ -16,7 +16,7 @@ public class ItemBucket : Interactable
   }
   public override void InRangeAction()
   {
-    tooltip.GetComponent<Text>().text = "Press E to pick up bucket";
+    tooltip.GetComponent<Text>().text = "Pick up";
     tooltip.SetActive(true);
   }
   public override void OutOfRangeAction()
