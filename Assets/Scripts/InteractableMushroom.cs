@@ -8,7 +8,7 @@ public class InteractableMushroom : Interactable
   [SerializeField] private GameObject player;
   [SerializeField] private float growTime = 2.5f;
   [SerializeField] private GameObject JumpBoostInteractable;
-  private bool isInteractable = true;
+  //private bool isInteractable = true;
   private bool isPlanted = false;
   private bool isGrowing = false;
   private float currentSize;
@@ -36,7 +36,7 @@ public class InteractableMushroom : Interactable
 
   public override void Interact()
   {
-    if (!isInteractable) return;
+    if (!player.GetComponent<Inventory>().mushroom) return;
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
 
     // Plant mushroom
@@ -52,7 +52,7 @@ public class InteractableMushroom : Interactable
     {
       player.GetComponent<Inventory>().UseWateringCan(growTime);
       isGrowing = true;
-      isInteractable = false;
+      //isInteractable = false;
       StartCoroutine(Deactivate());
     }
   }

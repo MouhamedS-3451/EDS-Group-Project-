@@ -17,14 +17,14 @@ public class InteractableJumpBoost : Interactable
 
   public override void InRangeAction()
   {
-    player.GetComponent<Jumping>().jumpHeightMultiplier = jumpBoostMultiplier;
+    player.GetComponent<PlayerJumping>().jumpHeightMultiplier = jumpBoostMultiplier;
     //transform.GetComponentInParent<SpriteRenderer>().enabled = false;
     transform.GetComponent<SpriteRenderer>().sprite = spriteDown;
   }
 
   public override void OutOfRangeAction()
   {
-    player.GetComponent<Jumping>().jumpHeightMultiplier = 1f;
+    player.GetComponent<PlayerJumping>().jumpHeightMultiplier = 1f;
     transform.GetComponent<SpriteRenderer>().sprite = spriteUp;
   }
 }

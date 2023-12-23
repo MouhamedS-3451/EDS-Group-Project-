@@ -22,10 +22,13 @@ public class PlayerMovement : MonoBehaviour
   private float directionY = 0f;
   private float lastPosition;
   private bool onLadder = false;
-  private float gravityScale = 15f;
+  public float gravityScaleStart = 15f;
+  public float gravityScaleGlider = 0.5f;
+  public float gravityScale;
 
   void Awake()
   {
+    gravityScale = gravityScaleStart;
     body = GetComponent<Rigidbody2D>();
     sprite = GameObject.Find("PlayerSpriteRenderer").GetComponent<SpriteRenderer>();
     lastPosition = body.position.x;
@@ -160,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
   bool IsJumping()
   {
-    return transform.GetComponentInChildren<Jumping>().IsJumping();
+    return transform.GetComponentInChildren<PlayerJumping>().IsJumping();
   }
 
   IEnumerator FallThroughPlatform(GameObject ground)

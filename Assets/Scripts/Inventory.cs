@@ -18,27 +18,31 @@ public class Inventory : MonoBehaviour
   public bool torch = false;
   public bool mushroom = false;
   public bool seeds = false;
-  public bool glider = false;  
+  public bool glider = false;
+  public bool gliderActive = false;
+  private float gravityScaleGlider;
 
   void Awake()
-  {  
-    DeactivateHotbarItems();
-    DeactivatePlayerItems();
+  {
+    HideHotbarItems();
+    HidePlayerItems();
+    gravityScaleGlider = GetComponent<PlayerMovement>().gravityScaleGlider;
   }
 
   void Update()
   {
     hotbar.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<UnityEngine.UI.Image>().fillAmount = waterLevel;
-    
-    if (Input.GetKeyDown(torchKey)) EquipTorch();
-    if (Input.GetKeyDown(gliderKey)) EquipGlider();
+
+    if (Input.GetKeyDown(torchKey)) UseTorch();
+    if (Input.GetKeyDown(gliderKey)) UseGlider();
+    if (Input.GetKeyUp(gliderKey)) UseGlider();
+    if (gliderActive && !GetComponent<PlayerJumping>().isJumping) GetComponent<Rigidbody2D>().gravityScale = gravityScaleGlider;
   }
 
   public void PickUpWateringCan()
   {
     hotbar.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
     wateringCan = true;
-    
   }
   public void FillWateringCan()
   {
@@ -56,12 +60,12 @@ public class Inventory : MonoBehaviour
   private IEnumerator UseWateringCanCoroutine(float time)
   {
     transform.GetComponent<PlayerMovement>().active = false;
-    transform.Find("Items").Find("WateringCan").GetComponent<SpriteRenderer>().enabled = true;
+    transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
 
     yield return new WaitForSeconds(time);
 
     transform.GetComponent<PlayerMovement>().active = true;
-    transform.Find("Items").Find("WateringCan").GetComponent<SpriteRenderer>().enabled = false;
+    transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
     water = false;
   }
 
@@ -71,10 +75,11 @@ public class Inventory : MonoBehaviour
     torch = true;
   }
 
-  public void EquipTorch()
+  public void UseTorch()
   {
     if (!torch) return;
-    // TODO: Show torch/ Hide torch
+    bool status = transform.GetChild(0).GetChild(1).gameObject.activeSelf;
+    transform.GetChild(0).GetChild(1).gameObject.SetActive(!status);
   }
 
   public void PickUpMushroom()
@@ -95,23 +100,38 @@ public class Inventory : MonoBehaviour
     glider = true;
   }
 
-  public void EquipGlider()
+  public void UseGlider()
   {
     if (!glider) return;
-    // TODO: Show glider/ Hide glider
-  }
 
-  void DeactivateHotbarItems()
-  {
-    foreach (Transform child in hotbar.transform)
+    bool status = transform.GetChild(0).GetChild(2).gameObject.activeSelf;
+    if (status)
     {
-      child.GetChild(0).gameObject.SetActive(false);
+      transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
+      GetComponent<Rigidbody2D>().gravityScale = GetComponent<PlayerMovement>().gravityScaleStart;
+      gliderActive = false;
+    }
+    else
+    {
+      transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+      gliderActive = true;
     }
   }
 
-  void DeactivatePlayerItems()
+  void HideHotbarItems()
   {
-    transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+    foreach (Transform hotbarItem in hotbar.transform)
+    {
+      hotbarItem.GetChild(0).gameObject.SetActive(false);
+    }
+  }
+
+  void HidePlayerItems()
+  {
+    foreach (Transform playerItem in transform.GetChild(0))
+    {
+      playerItem.gameObject.SetActive(false);
+    }
   }
 
 }

@@ -40,6 +40,7 @@ Material:
     m_Floats:
     - _Fade: 1
     - _QueueControl: 0
+    - _Size: 10
     m_Colors:
     - _Color: {r: 2.421421, g: 2.421421, b: 2.421421, a: 0}
   m_BuildTextureStacks: []

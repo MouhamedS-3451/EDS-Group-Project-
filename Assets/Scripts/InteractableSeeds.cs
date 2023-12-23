@@ -41,6 +41,7 @@ public class InteractableSeeds : Interactable
 
   public override void Interact()
   {
+    if (!player.GetComponent<Inventory>().seeds) return;
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
     if (!isPlanted && player.GetComponent<Inventory>().seeds)
     {

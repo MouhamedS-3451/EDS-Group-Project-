@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Jumping : MonoBehaviour
+public class PlayerJumping : MonoBehaviour
 {
   public bool active = true;
   public float jumpHeight = 7f;
@@ -9,7 +9,7 @@ public class Jumping : MonoBehaviour
   private float gravityScaleFall;
   public float jumpCancelFalloff = 2f;
   private Rigidbody2D body;
-  private bool jumping;
+  public bool isJumping;
 
   void Start()
   {
@@ -25,12 +25,12 @@ public class Jumping : MonoBehaviour
     {
       body.gravityScale = gravityScaleJump;
       float jumpForce = Mathf.Sqrt(jumpHeight * jumpHeightMultiplier * (Physics2D.gravity.y * body.gravityScale) * -2) * body.mass;
-      jumping = true;
+      isJumping = true;
       body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     // Cancel jump if space is released
-    if (jumping)
+    if (isJumping)
     {
       if (Input.GetKeyUp(KeyCode.Space))
       {
@@ -40,7 +40,7 @@ public class Jumping : MonoBehaviour
       if (body.velocity.y < 0)
       {
         body.gravityScale = gravityScaleFall;
-        jumping = false;
+        isJumping = false;
       }
     }
   }
@@ -53,6 +53,6 @@ public class Jumping : MonoBehaviour
 
   public bool IsJumping()
   {
-    return jumping;
+    return isJumping;
   }
 }
