@@ -9,7 +9,6 @@ public class InteractableSeeds : Interactable
   private float growthCurrent;
   [SerializeField] private float growTime = 2.5f;
   [SerializeField] private GameObject ladderInteractable;
-  //[SerializeField] private Material windEffect;
   private GameObject player;
   private bool isPlanted = false;
   private bool isGrowing = false;
@@ -31,11 +30,11 @@ public class InteractableSeeds : Interactable
     if (!isGrowing) return;
     GetComponent<Transition>().SmoothDamp(ref growthCurrent, growthMin, growthMax, growTime);
     ladderInteractable.GetComponent<SpriteRenderer>().material.SetFloat("_Cutoff_Height", growthCurrent);
+    player.GetComponent<Inventory>().waterLevel = 1 - growthCurrent;
     if (growthCurrent == growthMax)
     {
       isGrowing = false;
       gameObject.SetActive(false);
-      //ladderInteractable.GetComponent<SpriteRenderer>().material = windEffect;
       ladderInteractable.GetComponent<BoxCollider2D>().enabled = true;
     }
   }
@@ -46,13 +45,13 @@ public class InteractableSeeds : Interactable
     if (!isPlanted && player.GetComponent<Inventory>().seeds)
     {
       transform.GetComponent<SpriteRenderer>().enabled = true;
-      InteractionKey = player.GetComponent<Inventory>().bucketKey;
+      InteractionKey = player.GetComponent<Inventory>().wateringCanKey;
       isPlanted = true;
       return;
     }
     if (isPlanted && player.GetComponent<Inventory>().water)
     {
-      player.GetComponent<Inventory>().UseBucket(growTime);
+      player.GetComponent<Inventory>().UseWateringCan(growTime);
       ladderInteractable.SetActive(true);
       isGrowing = true;
     }

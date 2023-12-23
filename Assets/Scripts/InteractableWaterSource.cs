@@ -8,13 +8,13 @@ public class InteractableWaterSource : Interactable
 
   void Awake()
   {
-    InteractionKey = player.GetComponent<Inventory>().bucketKey;
+    InteractionKey = player.GetComponent<Inventory>().wateringCanKey;
   }
 
   public override void Interact()
   {
-    if (!player.GetComponent<Inventory>().bucket) return;
+    if (!player.GetComponent<Inventory>().wateringCan) return;
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-    player.GetComponent<Inventory>().FillBucket();
+    player.GetComponent<Inventory>().FillWateringCan();
   }
 }

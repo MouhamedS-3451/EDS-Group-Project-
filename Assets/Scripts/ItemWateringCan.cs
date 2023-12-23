@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemBucket : Interactable
+public class ItemWateringCan : Interactable
 {
   [SerializeField] private GameObject player;
   [SerializeField] private GameObject tooltip;
   public override void Interact()
   {
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-    player.GetComponent<Inventory>().PickUpBucket();
+    player.GetComponent<Inventory>().PickUpWateringCan();
     gameObject.SetActive(false);
     OutOfRangeAction();
   }

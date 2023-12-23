@@ -18,7 +18,7 @@ public class InteractableTree : Interactable
 
   public void Awake()
   {
-    InteractionKey = player.GetComponentInChildren<Inventory>().bucketKey;
+    InteractionKey = player.GetComponentInChildren<Inventory>().wateringCanKey;
     foreach (Transform child in transform)
     {
       if (child.tag.CompareTo("Toggleable") == 1) continue;
@@ -41,6 +41,7 @@ public class InteractableTree : Interactable
     if (!isGrowing) return;
 
     transform.GetComponent<Transition>().SmoothDamp(ref growthValue, growthMin, growthMax, growTime);
+    player.GetComponentInChildren<Inventory>().waterLevel = 1 - growthValue;
     if (growthValue == growthMax) isGrowing = false;
     foreach (Transform child in transform)
     {
@@ -54,7 +55,7 @@ public class InteractableTree : Interactable
     if (!isInteractable) return;
     if (!player.GetComponentInChildren<Inventory>().water == true) return;
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-    player.GetComponentInChildren<Inventory>().UseBucket(wateringTime);
+    player.GetComponentInChildren<Inventory>().UseWateringCan(wateringTime);
     isGrowing = true;
     isInteractable = false;
     StartCoroutine(Coroutine());

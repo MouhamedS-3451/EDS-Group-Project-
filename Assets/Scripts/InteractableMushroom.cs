@@ -29,6 +29,7 @@ public class InteractableMushroom : Interactable
   {
     if (!isGrowing) return;
     transform.GetComponent<Transition>().SmoothDamp(ref currentSize, minSize, maxSize, growTime);
+    player.GetComponent<Inventory>().waterLevel = 1 - currentSize;
     if (currentSize == maxSize) isGrowing = false;
     transform.GetComponentInChildren<SpriteRenderer>().transform.localScale = new Vector3(currentSize, currentSize, currentSize);
   }
@@ -49,7 +50,7 @@ public class InteractableMushroom : Interactable
     // Water mushroom
     else if(isPlanted && player.GetComponent<Inventory>().water)
     {
-      player.GetComponent<Inventory>().UseBucket(growTime);
+      player.GetComponent<Inventory>().UseWateringCan(growTime);
       isGrowing = true;
       isInteractable = false;
       StartCoroutine(Deactivate());

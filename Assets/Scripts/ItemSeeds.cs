@@ -10,14 +10,4 @@ public class ItemSeeds : Interactable
     player.GetComponent<Inventory>().PickUpSeeds();
     gameObject.SetActive(false);
   }
-
-  public override void InRangeAction()
-  {
-    GetComponentInChildren<Light2D>().enabled = true;
-  }
-
-  public override void OutOfRangeAction()
-  {
-    GetComponentInChildren<Light2D>().enabled = false;
-  }
 }
