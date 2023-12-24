@@ -20,13 +20,11 @@ public class Inventory : MonoBehaviour
   public bool seeds = false;
   public bool glider = false;
   public bool gliderActive = false;
-  private float gravityScaleGlider;
 
   void Awake()
   {
     HideHotbarItems();
     HidePlayerItems();
-    gravityScaleGlider = GetComponent<PlayerMovement>().gravityScaleGlider;
   }
 
   void Update()
@@ -36,7 +34,10 @@ public class Inventory : MonoBehaviour
     if (Input.GetKeyDown(torchKey)) UseTorch();
     if (Input.GetKeyDown(gliderKey)) UseGlider();
     if (Input.GetKeyUp(gliderKey)) UseGlider();
-    if (gliderActive && !GetComponent<PlayerJumping>().isJumping) GetComponent<Rigidbody2D>().gravityScale = gravityScaleGlider;
+    if (gliderActive && !GetComponent<PlayerJumping>().isJumping)
+    {
+      GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
+    }
   }
 
   public void PickUpWateringCan()
@@ -105,16 +106,15 @@ public class Inventory : MonoBehaviour
     if (!glider) return;
 
     bool status = transform.GetChild(0).GetChild(2).gameObject.activeSelf;
-    if (status)
-    {
-      transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
-      GetComponent<Rigidbody2D>().gravityScale = GetComponent<PlayerMovement>().gravityScaleStart;
-      gliderActive = false;
-    }
-    else
+    if (!status)
     {
       transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
       gliderActive = true;
+    }
+    else
+    {
+      transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
+      gliderActive = false;
     }
   }
 
