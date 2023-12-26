@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5257868080628432073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.33, y: -2.71, z: 0.6243371}
+  m_LocalPosition: {x: 23.17, y: -2.71, z: 0.6243371}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6720069207812260904}
   - component: {fileID: 1836530563806310217}
   - component: {fileID: 866094687379712171}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: MushroomInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3344329328483257087}
@@ -156,7 +156,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.96, y: 0.69}
+    oldSize: {x: 6, y: 4.3125}
     newSize: {x: 0.96, y: 0.69}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -177,7 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe60b21e4debd34ab86464bcabe52f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growSpeed: 2.5
+  player: {fileID: 0}
+  growTime: 2.5
   JumpBoostInteractable: {fileID: 8919643750854537324}
   maxSize: 7.5
 --- !u!114 &866094687379712171
@@ -204,7 +205,7 @@ GameObject:
   - component: {fileID: 5415016928467221740}
   - component: {fileID: 4112313525120556833}
   - component: {fileID: 1012411682991748798}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: JumpBoostInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +222,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2592886548559364627}
@@ -308,21 +309,21 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.94}
+  m_Offset: {x: 0, y: 4.65}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.96, y: 0.69}
+    oldSize: {x: 6, y: 4.3125}
     newSize: {x: 0.96, y: 0.69}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96, y: 0.06}
+  m_Size: {x: 5.7, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &1012411682991748798
 MonoBehaviour:
@@ -366,7 +367,7 @@ Transform:
   m_GameObject: {fileID: 9003113163715449424}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.586, z: 0.41622472}
+  m_LocalPosition: {x: 0, y: 3.64, z: 0.41622472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -415,7 +416,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96, y: 0.14}
+  m_Size: {x: 5.71, y: 0.9}
   m_EdgeRadius: 0
 --- !u!251 &8996709805651586036
 PlatformEffector2D:
