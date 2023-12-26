@@ -22,13 +22,14 @@ public class PlayerMovement : MonoBehaviour
   private float directionY = 0f;
   private float lastPosition;
   private bool onLadder = false;
-  public float gravityScale = 15f;
+  private float gravityScale;
 
   void Awake()
   {
     body = GetComponent<Rigidbody2D>();
     sprite = GameObject.Find("PlayerSpriteRenderer").GetComponent<SpriteRenderer>();
     lastPosition = body.position.x;
+    gravityScale = body.gravityScale;
   }
 
   void FixedUpdate()
