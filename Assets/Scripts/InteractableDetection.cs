@@ -23,7 +23,7 @@ public class InteractableDetection : MonoBehaviour
   {
     if (other != null && (((1 << other.gameObject.layer) & interactableLayer) != 0) && interactable == null)
     {
-      other.gameObject.BroadcastMessage("InRangeAction");
+      other.gameObject.BroadcastMessage("InRangeAction", SendMessageOptions.DontRequireReceiver);
       interactable = other.gameObject;
     }
   }
@@ -34,7 +34,7 @@ public class InteractableDetection : MonoBehaviour
     //if (other != null && ((((1 << other.gameObject.layer) & interactableLayer) != 0)))
     if (other != null && other.gameObject == interactable)
     {
-      other.gameObject.BroadcastMessage("OutOfRangeAction");
+      other.gameObject.BroadcastMessage("OutOfRangeAction", SendMessageOptions.DontRequireReceiver);
       interactable = null;
     }
   }
