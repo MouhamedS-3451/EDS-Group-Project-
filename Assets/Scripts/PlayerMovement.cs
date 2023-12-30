@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
   public bool active = true;
   public float maxSpeed = 20f;
   public float climbSpeed = 10f;
+  public float crouchSpeed = 10f;
   public bool useAcceleration = true;
   public float acceleration = 50f;
   public bool useDeceleration = true;
@@ -16,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
 
   private Rigidbody2D body;
   private SpriteRenderer sprite;
+  private Animator animator;
   private float SpeedLeft = 0f;
   private float SpeedRight = 0f;
   private float directionX = 0f;
   private float directionY = 0f;
   private float lastPosition;
   private bool onLadder = false;
+  private bool isCrouching = false;
   private float gravityScale;
 
   void Awake()
@@ -30,21 +33,27 @@ public class PlayerMovement : MonoBehaviour
     sprite = GameObject.Find("PlayerSpriteRenderer").GetComponent<SpriteRenderer>();
     lastPosition = body.position.x;
     gravityScale = body.gravityScale;
+    transform.Find("PlayerHitboxCrouching").gameObject.SetActive(false);
+    animator = transform.GetChild(1).GetComponent<Animator>();
   }
 
   void FixedUpdate()
   {
-    if (active)
-    {
-      directionX = Input.GetAxisRaw("Horizontal");
-      directionY = Input.GetAxisRaw("Vertical");
-    }
-    else
-    {
-      directionX = 0;
-      directionY = 0;
-    }
+    directionX = active ? Input.GetAxisRaw("Horizontal") : 0;
+    directionY = active ? Input.GetAxisRaw("Vertical") : 0;
 
+    ChangeFacingDirection(directionX);
+
+    UpdateXMovement();
+    UpdateYMovement();
+
+    if (useLean) Lean();
+
+    SetAnimationStates();
+  }
+
+  private void UpdateXMovement()
+  {
     // Determine which direction to accelerate in
     // Direction is 1 if moving right, -1 if moving left, 0 if not moving
     switch (directionX)
@@ -54,23 +63,45 @@ public class PlayerMovement : MonoBehaviour
         SpeedRight = Decelerate(SpeedRight);
         break;
       case 1:
-        ChangeFacingDirection(directionX);
         SpeedRight = Accelerate(SpeedRight);
         SpeedLeft = Decelerate(SpeedLeft);
         break;
       case -1:
-        ChangeFacingDirection(directionX);
         SpeedLeft = Accelerate(SpeedLeft);
         SpeedRight = Decelerate(SpeedRight);
         break;
     }
 
+    // move left or right
+    float velocity = -1 * SpeedLeft + SpeedRight;
+    body.velocity = new Vector2(velocity, body.velocity.y);
+
+    // Crouch
+    if ((IsGrounded() && directionY == -1) || isCrouching && HasCeiling())
+    {
+      isCrouching = true;
+      body.velocity = new Vector2(directionX * crouchSpeed, body.velocity.y);
+      transform.Find("PlayerHitboxStanding").gameObject.SetActive(false);
+      transform.Find("PlayerHitboxCrouching").gameObject.SetActive(true);
+    }
+    else
+    {
+      isCrouching = false;
+      transform.Find("PlayerHitboxStanding").gameObject.SetActive(true);
+      transform.Find("PlayerHitboxCrouching").gameObject.SetActive(false);
+    }
+
+  }
+
+  private void UpdateYMovement()
+  {
     GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
     if (ground != null && ground.layer == 7 && directionY == -1)
     {
       StartCoroutine(FallThroughPlatform(ground));
     }
 
+    // If on ladder, move up or down
     if (onLadder && !IsJumping() && (!IsGrounded() || directionY != 0))
     {
       body.velocity = new Vector2(body.velocity.x, directionY * climbSpeed);
@@ -80,12 +111,6 @@ public class PlayerMovement : MonoBehaviour
     {
       body.velocity = new Vector2(body.velocity.x, body.velocity.y);
     }
-
-    float velocity = -1 * SpeedLeft + SpeedRight;
-    body.velocity = new Vector2(velocity, body.velocity.y);
-    if (useLean) Lean();
-
-    lastPosition = body.position.x;
   }
 
   // Linear acceleration
@@ -136,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
   // Leans Forward when moving
   void Lean()
   {
+    lastPosition = body.position.x;
     float current_speed = (body.position.x - lastPosition) / Time.deltaTime;
 
     if (current_speed != 0) sprite.transform.eulerAngles = -1 * directionX * leanDegree * Vector3.forward;
@@ -155,7 +181,6 @@ public class PlayerMovement : MonoBehaviour
 
   bool IsGrounded()
   {
-    if (!active) return false;
     return transform.GetComponentInChildren<PlayerGroundDetection>().IsGrounded();
   }
 
@@ -164,11 +189,29 @@ public class PlayerMovement : MonoBehaviour
     return transform.GetComponentInChildren<PlayerJumping>().IsJumping();
   }
 
+  bool IsCrouching()
+  {
+    return isCrouching;
+  }
+
+  bool HasCeiling()
+  {
+    return transform.GetComponentInChildren<PlayerCeilingDetection>().HasCeiling();
+  }
+
+  private void SetAnimationStates()
+  {
+    animator.SetBool("isRunning", Mathf.Abs(directionX) > 0);
+    animator.SetBool("isJumping", IsJumping());
+    animator.SetBool("isGrounded", IsGrounded());
+    animator.SetBool("onLadder", onLadder);
+    animator.SetBool("isCrouching", IsCrouching());
+  }
+
   IEnumerator FallThroughPlatform(GameObject ground)
   {
     ground.GetComponent<Collider2D>().enabled = false;
     yield return new WaitForSeconds(0.5f);
     ground.GetComponent<Collider2D>().enabled = true;
   }
-
 }

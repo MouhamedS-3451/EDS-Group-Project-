@@ -38,6 +38,8 @@ public class Inventory : MonoBehaviour
     {
       GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, 0);
     }
+
+    if (gliderActive && IsGrounded()) UseGlider();
   }
 
   public void PickUpWateringCan()
@@ -133,5 +135,11 @@ public class Inventory : MonoBehaviour
       playerItem.gameObject.SetActive(false);
     }
   }
+
+  bool IsGrounded()
+  {
+    return GetComponentInChildren<PlayerGroundDetection>().IsGrounded();
+  }
+
 
 }

@@ -17,9 +17,9 @@ public class PlayerGroundDetection : MonoBehaviour
     }
   }
 
-  private void OnTriggerExit2D(Collider2D collision)
+  private void OnTriggerExit2D(Collider2D collider)
   {
-    if (collision != null && (((1 << collision.gameObject.layer) & groundLayer) != 0))
+    if (collider != null && (((1 << collider.gameObject.layer) & groundLayer) != 0))
     {
       isGrounded = false;
       ground = null;
