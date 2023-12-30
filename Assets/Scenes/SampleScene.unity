@@ -3525,6 +3525,10 @@ PrefabInstance:
       propertyPath: hotbar
       value: 
       objectReference: {fileID: 1198471546}
+    - target: {fileID: 5947736978805739495, guid: ffb015a41988adc4c99801c5540b8dab, type: 3}
+      propertyPath: jumpBufferTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6584684030030236569, guid: ffb015a41988adc4c99801c5540b8dab, type: 3}
       propertyPath: m_Name
       value: Player

@@ -8,6 +8,10 @@ public class PlayerJumping : MonoBehaviour
   public float gravityScaleJump = 5f;
   private float gravityScaleFall;
   public float jumpCancelFalloff = 2f;
+  public float coyoteTime = 0.1f;
+  public float jumpBufferTime = 0.1f;
+  private float coyoteTimer;
+  private float jumpBufferTimer;
   private Rigidbody2D body;
   public bool isJumping;
 
@@ -19,10 +23,28 @@ public class PlayerJumping : MonoBehaviour
 
   void Update()
   {
-    //Debug.Log(jumping);
-    // Jump if space is pressed and player is grounded
-    if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+    if (IsGrounded())
     {
+      coyoteTimer = coyoteTime;
+    }
+    else
+    {
+      coyoteTimer -= Time.deltaTime;
+    }
+
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+      jumpBufferTimer = jumpBufferTime;
+    }
+    else
+    {
+      jumpBufferTimer -= Time.deltaTime;
+    }
+
+    // Jump if space is pressed and player is grounded
+    if (jumpBufferTimer > 0f && coyoteTimer > 0f)
+    {
+      jumpBufferTimer = 0f;
       body.gravityScale = gravityScaleJump;
       float jumpForce = Mathf.Sqrt(jumpHeight * jumpHeightMultiplier * (Physics2D.gravity.y * body.gravityScale) * -2) * body.mass;
       isJumping = true;
@@ -35,6 +57,7 @@ public class PlayerJumping : MonoBehaviour
       if (Input.GetKeyUp(KeyCode.Space))
       {
         body.gravityScale = gravityScaleFall * jumpCancelFalloff;
+        coyoteTimer = 0;
       }
 
       if (body.velocity.y < 0)
