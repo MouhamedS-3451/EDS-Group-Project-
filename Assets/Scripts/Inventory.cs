@@ -54,12 +54,12 @@ public class Inventory : MonoBehaviour
   private IEnumerator UseWateringCanCoroutine(float time)
   {
     transform.GetComponent<PlayerMovement>().active = false;
-    transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+    wateringCanActive = true;
 
     yield return new WaitForSeconds(time);
 
     transform.GetComponent<PlayerMovement>().active = true;
-    transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+    wateringCanActive = false;
     water = false;
   }
 

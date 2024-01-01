@@ -790,6 +790,8 @@ MonoBehaviour:
   jumpHeightMultiplier: 1
   gravityScaleJump: 5
   jumpCancelFalloff: 2
+  coyoteTime: 0.1
+  jumpBufferTime: 0.1
   isJumping: 0
 --- !u!114 &6941165726385817183
 MonoBehaviour:
@@ -828,7 +830,9 @@ MonoBehaviour:
   wateringCan: 0
   water: 0
   waterLevel: 0
+  wateringCanActive: 0
   torch: 0
+  torchActive: 0
   mushroom: 0
   seeds: 0
   glider: 0
