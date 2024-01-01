@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -15,20 +13,18 @@ public class Inventory : MonoBehaviour
   public bool wateringCan = false;
   public bool water = false;
   public float waterLevel = 0;
+  public bool wateringCanActive = false;
   public bool torch = false;
+  public bool torchActive = false;
   public bool mushroom = false;
   public bool seeds = false;
   public bool glider = false;
   public bool gliderActive = false;
 
-  void Awake()
-  {
-    HideHotbarItems();
-    HidePlayerItems();
-  }
-
   void Update()
   {
+    HideShowItems();
+
     hotbar.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<UnityEngine.UI.Image>().fillAmount = waterLevel;
 
     if (Input.GetKeyDown(torchKey)) UseTorch();
@@ -42,11 +38,6 @@ public class Inventory : MonoBehaviour
     if (gliderActive && IsGrounded()) UseGlider();
   }
 
-  public void PickUpWateringCan()
-  {
-    hotbar.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-    wateringCan = true;
-  }
   public void FillWateringCan()
   {
     if (!wateringCan || water) return;
@@ -72,68 +63,29 @@ public class Inventory : MonoBehaviour
     water = false;
   }
 
-  public void PickUpTorch()
-  {
-    hotbar.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
-    torch = true;
-  }
-
   public void UseTorch()
   {
     if (!torch) return;
-    bool status = transform.GetChild(0).GetChild(1).gameObject.activeSelf;
-    transform.GetChild(0).GetChild(1).gameObject.SetActive(!status);
-  }
-
-  public void PickUpMushroom()
-  {
-    hotbar.transform.GetChild(2).GetChild(0).gameObject.SetActive(true);
-    mushroom = true;
-  }
-
-  public void PickUpSeeds()
-  {
-    hotbar.transform.GetChild(3).GetChild(0).gameObject.SetActive(true);
-    seeds = true;
-  }
-
-  public void PickUpGlider()
-  {
-    hotbar.transform.GetChild(4).GetChild(0).gameObject.SetActive(true);
-    glider = true;
+    torchActive = !torchActive;
   }
 
   public void UseGlider()
   {
     if (!glider) return;
-
-    bool status = transform.GetChild(0).GetChild(2).gameObject.activeSelf;
-    if (!status)
-    {
-      transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
-      gliderActive = true;
-    }
-    else
-    {
-      transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
-      gliderActive = false;
-    }
+    gliderActive = !gliderActive;    
   }
 
-  void HideHotbarItems()
+  void HideShowItems()
   {
-    foreach (Transform hotbarItem in hotbar.transform)
-    {
-      hotbarItem.GetChild(0).gameObject.SetActive(false);
-    }
-  }
+    hotbar.transform.GetChild(0).GetChild(0).gameObject.SetActive(wateringCan);
+    hotbar.transform.GetChild(1).GetChild(0).gameObject.SetActive(torch);
+    hotbar.transform.GetChild(2).GetChild(0).gameObject.SetActive(mushroom);
+    hotbar.transform.GetChild(3).GetChild(0).gameObject.SetActive(seeds);
+    hotbar.transform.GetChild(4).GetChild(0).gameObject.SetActive(glider);
 
-  void HidePlayerItems()
-  {
-    foreach (Transform playerItem in transform.GetChild(0))
-    {
-      playerItem.gameObject.SetActive(false);
-    }
+    transform.GetChild(0).GetChild(0).gameObject.SetActive(wateringCanActive);
+    transform.GetChild(0).GetChild(1).gameObject.SetActive(torchActive);
+    transform.GetChild(0).GetChild(2).gameObject.SetActive(gliderActive);
   }
 
   bool IsGrounded()

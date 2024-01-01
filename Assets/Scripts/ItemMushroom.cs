@@ -10,7 +10,7 @@ public class ItemMushroom : Interactable
   public override void Interact()
   {
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-    player.GetComponent<Inventory>().PickUpMushroom();
+    player.GetComponent<Inventory>().mushroom = true;
     gameObject.SetActive(false);
   }
 }

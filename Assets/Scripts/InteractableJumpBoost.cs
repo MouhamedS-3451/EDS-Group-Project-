@@ -12,13 +12,11 @@ public class InteractableJumpBoost : Interactable
   public void Awake()
   {
     spriteUp = transform.GetComponent<SpriteRenderer>().sprite;
-    gameObject.SetActive(false);
   }
 
   public override void InRangeAction()
   {
     player.GetComponent<PlayerJumping>().jumpHeightMultiplier = jumpBoostMultiplier;
-    //transform.GetComponentInParent<SpriteRenderer>().enabled = false;
     transform.GetComponent<SpriteRenderer>().sprite = spriteDown;
   }
 

@@ -8,8 +8,7 @@ public class InteractableMushroom : Interactable
   [SerializeField] private GameObject player;
   [SerializeField] private float growTime = 2.5f;
   [SerializeField] private GameObject JumpBoostInteractable;
-  //private bool isInteractable = true;
-  private bool isPlanted = false;
+  public bool isPlanted = false;
   private bool isGrowing = false;
   private float currentSize;
   private float minSize;
@@ -19,9 +18,17 @@ public class InteractableMushroom : Interactable
   {
     minSize = transform.GetComponentInChildren<SpriteRenderer>().transform.localScale.x;
     currentSize = minSize;
+    transform.parent.GetChild(1).gameObject.SetActive(false);
+
     transform.GetComponentInChildren<SpriteRenderer>().enabled = false;
     InteractionKey = player.GetComponent<Inventory>().mushroomKey;
-    InteractionKey = KeyCode.Alpha3;
+
+    if (isPlanted)
+    {
+      transform.GetComponentInChildren<SpriteRenderer>().enabled = true;
+      InteractionKey = player.GetComponent<Inventory>().wateringCanKey;
+    }
+    
   }
 
   // Update mushroom scale
@@ -36,7 +43,6 @@ public class InteractableMushroom : Interactable
 
   public override void Interact()
   {
-    if (!player.GetComponent<Inventory>().mushroom) return;
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
 
     // Plant mushroom
@@ -52,7 +58,6 @@ public class InteractableMushroom : Interactable
     {
       player.GetComponent<Inventory>().UseWateringCan(growTime);
       isGrowing = true;
-      //isInteractable = false;
       StartCoroutine(Deactivate());
     }
   }

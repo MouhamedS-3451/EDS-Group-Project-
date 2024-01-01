@@ -9,7 +9,7 @@ public class ItemGlider : Interactable
   public override void Interact()
   {
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-    player.GetComponent<Inventory>().PickUpGlider();
+    player.GetComponent<Inventory>().glider = true;
     gameObject.SetActive(false);
   }
 }
