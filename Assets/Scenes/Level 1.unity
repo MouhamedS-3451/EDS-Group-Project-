@@ -544,7 +544,7 @@ PrefabInstance:
       objectReference: {fileID: 1246857316}
     - target: {fileID: 6835455027583840344, guid: 146a69971f89c7c4c98bd1a8bf6b0ce6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.046396
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 6835455027583840344, guid: 146a69971f89c7c4c98bd1a8bf6b0ce6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15099,7 +15099,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 744488615936566293, guid: 2e91cc3eeed9e3c4b9a4e3038f8bb5c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.35
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 744488615936566293, guid: 2e91cc3eeed9e3c4b9a4e3038f8bb5c0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15567,7 +15567,7 @@ PrefabInstance:
       objectReference: {fileID: 1246857316}
     - target: {fileID: 6870323463664864484, guid: f1b46b30e9b636a45be363d772e0ef55, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.85086
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 6870323463664864484, guid: f1b46b30e9b636a45be363d772e0ef55, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15628,7 +15628,7 @@ PrefabInstance:
       objectReference: {fileID: 1246857316}
     - target: {fileID: 3344329328483257087, guid: 6c61eb511b0c71f4b94fefa82b319529, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.970333
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 3344329328483257087, guid: 6c61eb511b0c71f4b94fefa82b319529, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15675,6 +15675,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c61eb511b0c71f4b94fefa82b319529, type: 3}
+--- !u!1 &1712594322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1712594323}
+  m_Layer: 10
+  m_Name: CampFire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1712594323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712594322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 95, y: 8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1736645482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15689,7 +15720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6088237504026042587, guid: 96f636b9e3606964da649eb4b8a8368c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.422573
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 6088237504026042587, guid: 96f636b9e3606964da649eb4b8a8368c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15757,3 +15788,4 @@ SceneRoots:
   - {fileID: 709113086}
   - {fileID: 1623857110}
   - {fileID: 800113172}
+  - {fileID: 1712594323}
