@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
   private float directionY = 0f;
   private float lastPosition;
   private bool onLadder = false;
+  public bool onWall = false;
   private bool isCrouching = false;
   private float gravityScale;
 
@@ -205,6 +207,7 @@ public class PlayerMovement : MonoBehaviour
     animator.SetBool("isJumping", IsJumping());
     animator.SetBool("isGrounded", IsGrounded());
     animator.SetBool("onLadder", onLadder);
+    animator.SetBool("onWall", onWall);
     animator.SetBool("isCrouching", IsCrouching());
   }
 

@@ -39,12 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Parallax
+    uniqueID: 526901919
+    locked: 0
+  - name: Parallax2
+    uniqueID: 2774871267
+    locked: 0
   - name: BG
     uniqueID: 3505052071
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: IgnoredByLight
-    uniqueID: 2534579783
+  - name: FG
+    uniqueID: 1355267309
     locked: 0
