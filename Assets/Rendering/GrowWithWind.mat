@@ -40,7 +40,9 @@ Material:
     m_Floats:
     - _ColorIntensity: 1
     - _Cutoff_Height: 1
+    - _Frequency: 2
     - _Noise_Scale: 15
+    - _WindSpeed: 1
     - _WindStrength: 1
     m_Colors: []
   m_BuildTextureStacks: []

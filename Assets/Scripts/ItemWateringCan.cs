@@ -9,7 +9,7 @@ public class ItemWateringCan : Interactable
   public override void Interact()
   {
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-    player.GetComponent<Inventory>().PickUpWateringCan();
+    player.GetComponent<Inventory>().wateringCan = true; 
     gameObject.SetActive(false);
     OutOfRangeAction();
   }

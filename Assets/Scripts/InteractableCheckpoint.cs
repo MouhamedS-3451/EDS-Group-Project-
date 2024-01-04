@@ -15,7 +15,7 @@ public class InteractableCheckpoint : Interactable
   }
   public override void InRangeAction()
   {
-    if (player.GetComponent<PlayerRespawn>().currentCheckpoint < checkpointID)
+    if (player.GetComponent<PlayerRespawn>().currentCheckpoint <= checkpointID)
     {
       GetComponent<SpriteRenderer>().material.SetColor("_Color", colorActive);
       player.GetComponent<PlayerRespawn>().currentCheckpoint = checkpointID;

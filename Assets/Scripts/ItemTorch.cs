@@ -8,7 +8,7 @@ public class ItemTorch : Interactable
     public override void Interact()
     {
       player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-      player.GetComponent<Inventory>().PickUpTorch();
+      player.GetComponent<Inventory>().torch = true;
       gameObject.SetActive(false);
     }
 }

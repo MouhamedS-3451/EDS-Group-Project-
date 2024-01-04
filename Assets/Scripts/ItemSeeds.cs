@@ -7,7 +7,7 @@ public class ItemSeeds : Interactable
   public override void Interact()
   {
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
-    player.GetComponent<Inventory>().PickUpSeeds();
+    player.GetComponent<Inventory>().seeds = true;
     gameObject.SetActive(false);
   }
 }

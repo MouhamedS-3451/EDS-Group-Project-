@@ -196,7 +196,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.05999756, y: -0.34599972, z: 0}
-  m_LocalScale: {x: 0.9, y: 1.1, z: 0.9}
+  m_LocalScale: {x: 0.75, y: 1.1, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5395464323407236065}
@@ -790,6 +790,8 @@ MonoBehaviour:
   jumpHeightMultiplier: 1
   gravityScaleJump: 5
   jumpCancelFalloff: 2
+  coyoteTime: 0.1
+  jumpBufferTime: 0.1
   isJumping: 0
 --- !u!114 &6941165726385817183
 MonoBehaviour:
@@ -828,7 +830,9 @@ MonoBehaviour:
   wateringCan: 0
   water: 0
   waterLevel: 0
+  wateringCanActive: 0
   torch: 0
+  torchActive: 0
   mushroom: 0
   seeds: 0
   glider: 0
@@ -1148,7 +1152,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.065, y: -1.038, z: 0}
-  m_LocalScale: {x: 1.25, y: 0.13000003, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.13000003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5395464323407236065}
