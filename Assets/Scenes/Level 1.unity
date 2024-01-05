@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 18798471}
   - component: {fileID: 18798473}
   - component: {fileID: 18798472}
+  - component: {fileID: 18798474}
   m_Layer: 0
   m_Name: Background 1
   m_TagString: Untagged
@@ -345,6 +346,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &18798474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18798470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb13df68c5e6e943899177cdbbd401a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1537554152}
+  parallaxEffect: 0.1
 --- !u!1001 &28739337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -435,6 +450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 4035125104847300703, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
+      propertyPath: m_TagString
+      value: Toggleable
+      objectReference: {fileID: 0}
     - target: {fileID: 4518790126611606049, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -490,6 +509,18 @@ PrefabInstance:
     - target: {fileID: 4518790126611606049, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019485245379521723, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
+      propertyPath: m_TagString
+      value: Toggleable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215373743499058549, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
+      propertyPath: m_TagString
+      value: Toggleable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146017535487209902, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
+      propertyPath: m_TagString
+      value: Toggleable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -854,6 +885,7 @@ GameObject:
   - component: {fileID: 593774969}
   - component: {fileID: 593774971}
   - component: {fileID: 593774970}
+  - component: {fileID: 593774972}
   m_Layer: 0
   m_Name: Background 3
   m_TagString: Untagged
@@ -1085,6 +1117,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &593774972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593774968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb13df68c5e6e943899177cdbbd401a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1537554152}
+  parallaxEffect: 0.3
 --- !u!1001 &709113086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1211,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 1246857316}
     - target: {fileID: 3219084562783412066, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
       propertyPath: m_Name
-      value: Tree (2)
+      value: Tree 1
       objectReference: {fileID: 0}
     - target: {fileID: 4518790126611606049, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
       propertyPath: m_LocalScale.x
@@ -31817,6 +31863,7 @@ GameObject:
   - component: {fileID: 1119952636}
   - component: {fileID: 1119952638}
   - component: {fileID: 1119952637}
+  - component: {fileID: 1119952639}
   m_Layer: 0
   m_Name: Background 4
   m_TagString: Untagged
@@ -32928,6 +32975,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1119952639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119952635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb13df68c5e6e943899177cdbbd401a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1537554152}
+  parallaxEffect: 0.4
 --- !u!20 &1123529166 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 568077580202278470, guid: ee4bf356a580b274d9c6e215c81ab599, type: 3}
@@ -33015,6 +33076,7 @@ GameObject:
   - component: {fileID: 1273116569}
   - component: {fileID: 1273116571}
   - component: {fileID: 1273116570}
+  - component: {fileID: 1273116572}
   m_Layer: 0
   m_Name: Background 0
   m_TagString: Untagged
@@ -33226,6 +33288,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1273116572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273116568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb13df68c5e6e943899177cdbbd401a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1537554152}
+  parallaxEffect: 0
 --- !u!1001 &1312601313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33305,7 +33381,7 @@ PrefabInstance:
       objectReference: {fileID: 1246857316}
     - target: {fileID: 3219084562783412066, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
       propertyPath: m_Name
-      value: Tree (1)
+      value: Tree 2
       objectReference: {fileID: 0}
     - target: {fileID: 4518790126611606049, guid: f16b70624034bf34c98e907b93c0584a, type: 3}
       propertyPath: m_LocalScale.x
@@ -37284,6 +37360,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1537554152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7047707260962681343, guid: ee4bf356a580b274d9c6e215c81ab599, type: 3}
+  m_PrefabInstance: {fileID: 28739337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1554339722
 GameObject:
   m_ObjectHideFlags: 0
@@ -38410,6 +38491,7 @@ GameObject:
   - component: {fileID: 1998339916}
   - component: {fileID: 1998339918}
   - component: {fileID: 1998339917}
+  - component: {fileID: 1998339919}
   m_Layer: 0
   m_Name: Background 2
   m_TagString: Untagged
@@ -38631,6 +38713,20 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1998339919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998339915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb13df68c5e6e943899177cdbbd401a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1537554152}
+  parallaxEffect: 0.2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -38641,8 +38737,8 @@ SceneRoots:
   - {fileID: 1612935962}
   - {fileID: 181394904}
   - {fileID: 29419809}
-  - {fileID: 1410382127}
   - {fileID: 865987879}
+  - {fileID: 1410382127}
   - {fileID: 1312601313}
   - {fileID: 1736645482}
   - {fileID: 1638094221}
