@@ -54,7 +54,7 @@ public class InteractableMushroom : Interactable
       isPlanted = true;
     }
     // Water mushroom
-    else if(isPlanted && player.GetComponent<Inventory>().water)
+    else if(isPlanted && player.GetComponent<Inventory>().waterLevel == 1)
     {
       player.GetComponent<Inventory>().UseWateringCan(growTime);
       isGrowing = true;

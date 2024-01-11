@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
       foreach (Transform collectible in collectiblesCounter.transform.GetChild(i))
       {
         Color color = Color.black;
-        color.a = 0.25f;
+        color.a = 0.5f;
         collectible.GetComponent<Image>().color = color;
       }
     }
@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
 
   public void FillWateringCan()
   {
-    if (!wateringCan || water) return;
+    if (!wateringCan) return;
     waterLevel = 1;
     water = true;
   }

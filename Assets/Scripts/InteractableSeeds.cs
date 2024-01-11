@@ -50,7 +50,7 @@ public class InteractableSeeds : Interactable
       isPlanted = true;
       return;
     }
-    if (isPlanted && player.GetComponent<Inventory>().water)
+    if (isPlanted && player.GetComponent<Inventory>().waterLevel == 1)
     {
       player.GetComponent<Inventory>().UseWateringCan(growTime);
       ladderInteractable.SetActive(true);
