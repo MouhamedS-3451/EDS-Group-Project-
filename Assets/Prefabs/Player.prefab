@@ -615,8 +615,8 @@ Transform:
   m_GameObject: {fileID: 5933559795445619880}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05999756, y: 0.2629, z: 0}
-  m_LocalScale: {x: 1.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0.093, y: 0.036, z: 0}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5395464323407236065}
@@ -773,6 +773,7 @@ MonoBehaviour:
   deceleration: 100
   useLean: 1
   leanDegree: 2.5
+  onWall: 0
 --- !u!114 &5947736978805739495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +823,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hotbar: {fileID: 0}
+  collectiblesCounter: {fileID: 0}
+  collectiblesTypeCount: 2
   wateringCanKey: 49
   torchKey: 50
   mushroomKey: 51

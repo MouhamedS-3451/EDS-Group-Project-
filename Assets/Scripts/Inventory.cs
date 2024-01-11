@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
   [SerializeField] private GameObject hotbar;
+  [SerializeField] private GameObject collectiblesCounter;
+  public int collectiblesTypeCount = 2;
   public KeyCode wateringCanKey = KeyCode.Alpha1;
   public KeyCode torchKey = KeyCode.Alpha2;
   public KeyCode mushroomKey = KeyCode.Alpha3;
@@ -21,11 +24,25 @@ public class Inventory : MonoBehaviour
   public bool glider = false;
   public bool gliderActive = false;
 
+  public void Awake()
+  {
+    for (int i = 0; i < collectiblesTypeCount; i++)
+    {
+      foreach (Transform collectible in collectiblesCounter.transform.GetChild(i))
+      {
+        Color color = Color.black;
+        color.a = 0.25f;
+        collectible.GetComponent<Image>().color = color;
+      }
+    }
+
+  }
+
   void Update()
   {
     HideShowItems();
 
-    hotbar.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<UnityEngine.UI.Image>().fillAmount = waterLevel;
+    hotbar.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().fillAmount = waterLevel;
 
     if (Input.GetKeyDown(torchKey)) UseTorch();
     if (Input.GetKeyDown(gliderKey)) UseGlider();
@@ -45,13 +62,13 @@ public class Inventory : MonoBehaviour
     water = true;
   }
 
-  public void UseWateringCan(float time)
+  public void UseWateringCan(float time, bool keepWater = false)
   {
     if (!water) return;
-    StartCoroutine(UseWateringCanCoroutine(time));
+    StartCoroutine(UseWateringCanCoroutine(time, keepWater));
   }
 
-  private IEnumerator UseWateringCanCoroutine(float time)
+  private IEnumerator UseWateringCanCoroutine(float time, bool keepWater)
   {
     transform.GetComponent<PlayerMovement>().active = false;
     transform.GetComponent<PlayerJumping>().active = false;
@@ -62,7 +79,7 @@ public class Inventory : MonoBehaviour
     transform.GetComponent<PlayerMovement>().active = true;
     transform.GetComponent<PlayerJumping>().active = true;
     wateringCanActive = false;
-    water = false;
+    if (!keepWater) water = false;
   }
 
   public void UseTorch()
@@ -74,7 +91,12 @@ public class Inventory : MonoBehaviour
   public void UseGlider()
   {
     if (!glider) return;
-    gliderActive = !gliderActive;    
+    gliderActive = !gliderActive;
+  }
+
+  public void Collect(int type, int index)
+  {
+    collectiblesCounter.transform.GetChild(type).GetChild(index).GetComponent<Image>().color = Color.white;
   }
 
   void HideShowItems()
@@ -94,6 +116,5 @@ public class Inventory : MonoBehaviour
   {
     return GetComponentInChildren<PlayerGroundDetection>().IsGrounded();
   }
-
 
 }
