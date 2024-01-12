@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Collect
     type: 0
-    clip: {fileID: 8300000, guid: cc8f164e865a78b4fa6d1e9f8845a81d, type: 3}
+    clip: {fileID: 8300000, guid: 792bf55e160d37d45a927199e5953395, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0
@@ -75,14 +75,14 @@ MonoBehaviour:
     loop: 1
   - name: PlantSeeds
     type: 0
-    clip: {fileID: 8300000, guid: 50a963206c36033479e2af3c535f000a, type: 3}
+    clip: {fileID: 8300000, guid: 17ed70673b50c07498b7fdd23d9ead52, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0
     loop: 0
   - name: FillWater
     type: 0
-    clip: {fileID: 8300000, guid: dc5a0e9aa7a7fbd4c943d0ca094a064b, type: 3}
+    clip: {fileID: 8300000, guid: 61e8364d6e9d5dc4289e8a1503e35450, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0
