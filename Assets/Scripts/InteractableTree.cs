@@ -80,8 +80,8 @@ public class InteractableTree : Interactable
 
   public override void Interact()
   {
-    if (!isInteractable) return;
-    if (!player.GetComponentInChildren<Inventory>().water == true) return;
+    if (!isInteractable || player.GetComponentInChildren<Inventory>().waterLevel != 1) return;
+
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
     player.GetComponentInChildren<Inventory>().UseWateringCan(wateringTime);
     isGrowing = true;

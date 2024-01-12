@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3348060082229323009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4834234588528044405}
+  - component: {fileID: 5288519379785344475}
+  m_Layer: 0
+  m_Name: Audiomanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4834234588528044405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348060082229323009}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 256.27844, y: 89.01695, z: -0.8595005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5288519379785344475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348060082229323009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f36fad47898c04ebf7e35a150e3315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Collect
+    type: 0
+    clip: {fileID: 8300000, guid: cc8f164e865a78b4fa6d1e9f8845a81d, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: JumpBoost
+    type: 0
+    clip: {fileID: 8300000, guid: 95786d47dd356a94e99dffa219b82fdf, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: TorchLighting
+    type: 0
+    clip: {fileID: 8300000, guid: 50b534f85827681458274214cf08c46d, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: TorchBurning
+    type: 0
+    clip: {fileID: 8300000, guid: 4d2707c48540b1c4e9d9f53e327d91f8, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+  - name: PlantSeeds
+    type: 0
+    clip: {fileID: 8300000, guid: 50a963206c36033479e2af3c535f000a, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: FillWater
+    type: 0
+    clip: {fileID: 8300000, guid: dc5a0e9aa7a7fbd4c943d0ca094a064b, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: UseWater
+    type: 0
+    clip: {fileID: 8300000, guid: 862cb0bc4244ccf428be10a9718013fd, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 0

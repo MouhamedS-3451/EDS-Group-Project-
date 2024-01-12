@@ -38,6 +38,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _Ampitude: 0.005
     - _ColorIntensity: 1
     - _Cutoff_Height: 1
     - _Frequency: 2

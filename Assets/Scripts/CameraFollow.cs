@@ -20,6 +20,7 @@ public class CameraFollow : MonoBehaviour
     {
       transform.GetChild(0).gameObject.SetActive(transform.position.y > 175);
       transform.GetChild(1).gameObject.SetActive(transform.position.y > 175);
+      transform.GetChild(3).gameObject.SetActive(transform.position.y <= 175);
     }
 
     float playerDirection = GameObject.Find("Player").GetComponent<PlayerMovement>().GetDirectionX();
