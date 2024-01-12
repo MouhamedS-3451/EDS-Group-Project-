@@ -24,6 +24,8 @@ public class Inventory : MonoBehaviour
   public bool glider = false;
   public bool gliderActive = false;
 
+  private AudioManager audioManager;
+
   public void Awake()
   {
     for (int i = 0; i < collectiblesTypeCount; i++)
@@ -35,6 +37,8 @@ public class Inventory : MonoBehaviour
         collectible.GetComponent<Image>().color = color;
       }
     }
+
+    audioManager = FindObjectOfType<AudioManager>();
 
   }
 
@@ -57,9 +61,10 @@ public class Inventory : MonoBehaviour
 
   public void FillWateringCan()
   {
-    if (!wateringCan) return;
+    if (!wateringCan || waterLevel == 1) return;
     waterLevel = 1;
     water = true;
+    audioManager.Play("FillWater");
   }
 
   public void UseWateringCan(float time, bool keepWater = false)
@@ -73,6 +78,7 @@ public class Inventory : MonoBehaviour
     transform.GetComponent<PlayerMovement>().active = false;
     transform.GetComponent<PlayerJumping>().active = false;
     wateringCanActive = true;
+    audioManager.Play("UseWater");
 
     yield return new WaitForSeconds(time);
 
@@ -85,7 +91,18 @@ public class Inventory : MonoBehaviour
   public void UseTorch()
   {
     if (!torch) return;
-    torchActive = !torchActive;
+
+    if (torchActive)
+    {
+      torchActive = false;
+      audioManager.Stop("TorchBurning");
+    }
+    else
+    {
+      audioManager.Play("TorchLighting");
+      audioManager.Play("TorchBurning");
+      torchActive = true;
+    }
   }
 
   public void UseGlider()
@@ -96,7 +113,12 @@ public class Inventory : MonoBehaviour
 
   public void Collect(int type, int index)
   {
-    collectiblesCounter.transform.GetChild(type).GetChild(index).GetComponent<Image>().color = Color.white;
+    Transform image = collectiblesCounter.transform.GetChild(type).GetChild(index);
+    Transform animator = image.transform.GetChild(0);
+
+    image.GetComponent<Image>().color = Color.white;
+    
+    animator.gameObject.SetActive(true);
   }
 
   void HideShowItems()

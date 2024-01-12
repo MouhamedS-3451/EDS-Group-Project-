@@ -30,8 +30,14 @@ public class InteractableCollectible : Interactable
     GetComponentInChildren<ParticleSystem>().Stop();
     forceField.SetActive(true);
 
-    player.GetComponent<Inventory>().Collect(collectibleType, collectibleIndex);
+    StartCoroutine(CollectCoroutine());
+  }
 
+  private IEnumerator CollectCoroutine()
+  {
+    yield return new WaitForSeconds(0);
+    player.GetComponent<Inventory>().Collect(collectibleType, collectibleIndex);
+    FindObjectOfType<AudioManager>().Play("Collect");
     isCollected = true;
   }
 

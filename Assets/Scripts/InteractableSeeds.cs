@@ -12,6 +12,7 @@ public class InteractableSeeds : Interactable
   private GameObject player;
   private bool isPlanted = false;
   private bool isGrowing = false;
+  private AudioManager audioManager;
 
   void Awake()
   {
@@ -23,6 +24,7 @@ public class InteractableSeeds : Interactable
     ladderInteractable.GetComponent<SpriteRenderer>().material.SetFloat("_Cutoff_Height", growthCurrent);
     ladderInteractable.GetComponent<BoxCollider2D>().enabled = false;
     ladderInteractable.SetActive(false);
+    audioManager = FindObjectOfType<AudioManager>();
   }
 
   void Update()
@@ -43,13 +45,18 @@ public class InteractableSeeds : Interactable
   {
     if (!player.GetComponent<Inventory>().seeds) return;
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
+
+    // Plant seeds
     if (!isPlanted && player.GetComponent<Inventory>().seeds)
     {
       transform.GetComponent<SpriteRenderer>().enabled = true;
       InteractionKey = player.GetComponent<Inventory>().wateringCanKey;
       isPlanted = true;
+      audioManager.Play("PlantSeeds");
       return;
     }
+
+    // Water seeds
     if (isPlanted && player.GetComponent<Inventory>().waterLevel == 1)
     {
       player.GetComponent<Inventory>().UseWateringCan(growTime);

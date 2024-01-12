@@ -24,5 +24,7 @@ public class InteractableJumpBoost : Interactable
   {
     player.GetComponent<PlayerJumping>().jumpHeightMultiplier = 1f;
     transform.GetComponent<SpriteRenderer>().sprite = spriteUp;
+
+    FindObjectOfType<AudioManager>().Play("JumpBoost");
   }
 }
