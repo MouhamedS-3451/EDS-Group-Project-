@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 1024031720674127617}
   - component: {fileID: 3900512201577372510}
   - component: {fileID: 5128313987094473445}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: PlayerCeilingCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 4030179892763411649}
   - component: {fileID: 6734164247577069414}
   - component: {fileID: 8990582720633505740}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: PlayerGroundCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

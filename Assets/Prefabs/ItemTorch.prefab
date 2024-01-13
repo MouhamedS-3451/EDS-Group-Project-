@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6441901432034203371}
   - component: {fileID: 7753629243784390639}
   - component: {fileID: 1373083688598842643}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemTorch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

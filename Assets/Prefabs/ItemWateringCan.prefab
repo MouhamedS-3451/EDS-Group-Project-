@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5902341868416890494}
   - component: {fileID: 8819037758602849753}
   - component: {fileID: 2706912610178446567}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: ItemWateringCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  tooltip: {fileID: 0}
 --- !u!61 &2706912610178446567
 BoxCollider2D:
   m_ObjectHideFlags: 0
