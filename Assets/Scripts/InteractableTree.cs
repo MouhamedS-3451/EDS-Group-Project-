@@ -29,7 +29,7 @@ public class InteractableTree : Interactable
       child.GetComponent<SpriteRenderer>().material = foliageMaterial;
       child.GetComponent<SpriteRenderer>().material.SetFloat("_Cutoff_Height", growthValue);
 
-      if (child.gameObject.layer == LayerMask.NameToLayer("Platform"))
+      if (child.gameObject.layer == LayerMask.NameToLayer("PlatformLeaves"))
       {
         child.GetComponent<BoxCollider2D>().enabled = false;
       }
