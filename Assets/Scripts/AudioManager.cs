@@ -4,26 +4,33 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
+  public static AudioManager instance;
+
+  public GameManager gameManager;
+
   public Sound[] sounds;
 
-  public AudioMixer mixer;
+  public AudioMixer audioMixer;
 
   [HideInInspector]
-  public AudioMixerGroup masterMixer;
+  public AudioMixerGroup mixerGroupMaster;
 
   [HideInInspector]
-  public AudioMixerGroup musicMixer;
+  public AudioMixerGroup mixerGroupMusic;
 
   [HideInInspector]
-  public AudioMixerGroup sfxMixer;
+  public AudioMixerGroup mixerGroupSFX;
 
 
-  public static AudioManager instance;
-  void Awake()
+  
+  void Start()
   {
-    masterMixer = mixer.FindMatchingGroups("Master")[0];
-    musicMixer = mixer.FindMatchingGroups("Music")[0];
-    sfxMixer = mixer.FindMatchingGroups("SFX")[0];
+    gameManager = FindObjectOfType<GameManager>();
+
+    mixerGroupMaster = audioMixer.FindMatchingGroups("Master")[0];
+    mixerGroupMusic = audioMixer.FindMatchingGroups("Music")[0];
+    mixerGroupSFX = audioMixer.FindMatchingGroups("SFX")[0];
+
     if (instance == null)
     {
       instance = this;
@@ -34,6 +41,9 @@ public class AudioManager : MonoBehaviour
       return;
     }
     DontDestroyOnLoad(gameObject);
+    
+    audioMixer.SetFloat("VolumeMusic", Mathf.Log10(gameManager.musicVolume) * 20);
+    audioMixer.SetFloat("VolumeSFX", Mathf.Log10(gameManager.sfxVolume) * 20);
   }
 
   public void Play(string name) { Play(name, gameObject); }
@@ -65,7 +75,7 @@ public class AudioManager : MonoBehaviour
     source.pitch = sound.pitch;
     source.spatialBlend = sound.spatialBlend;
     source.loop = sound.loop;
-    source.outputAudioMixerGroup = sound.type == Sound.SoundType.Music ? musicMixer : sfxMixer;
+    source.outputAudioMixerGroup = sound.type == Sound.SoundType.Music ? mixerGroupMusic : mixerGroupSFX;
 
     if (!source.isPlaying) source.Play();
   }

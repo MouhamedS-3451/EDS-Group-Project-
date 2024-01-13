@@ -13,7 +13,7 @@ public class InteractableWaterSource : Interactable
 
   public override void Interact()
   {
-    if (!player.GetComponent<Inventory>().wateringCan) return;
+    if (player.GetComponent<Inventory>().waterLevel == 1) return;
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
     player.GetComponent<Inventory>().FillWateringCan();
   }
