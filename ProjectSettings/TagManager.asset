@@ -12,11 +12,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Platform
-  - 
-  - GroundDetector
   - Interactable
+  - GroundDetector
+  - 
+  - GroundStone
+  - GroundGrass
   - 
   - 
   - 
@@ -34,10 +34,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - PlatformMushroom
+  - PlatformLeaves
+  - PlatformGrass
+  - PlatformStone
   m_SortingLayers:
   - name: Parallax
     uniqueID: 526901919

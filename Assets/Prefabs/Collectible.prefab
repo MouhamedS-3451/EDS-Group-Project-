@@ -4852,7 +4852,7 @@ GameObject:
   - component: {fileID: 3701888503307347343}
   - component: {fileID: 3648506739749584185}
   - component: {fileID: 7309600248673414384}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Collectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}

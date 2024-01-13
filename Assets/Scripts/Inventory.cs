@@ -75,10 +75,11 @@ public class Inventory : MonoBehaviour
 
   private IEnumerator UseWateringCanCoroutine(float time, bool keepWater)
   {
+    audioManager.Play("UseWater");
     transform.GetComponent<PlayerMovement>().active = false;
     transform.GetComponent<PlayerJumping>().active = false;
     wateringCanActive = true;
-    audioManager.Play("UseWater");
+    
 
     yield return new WaitForSeconds(time);
 
@@ -86,6 +87,7 @@ public class Inventory : MonoBehaviour
     transform.GetComponent<PlayerJumping>().active = true;
     wateringCanActive = false;
     if (!keepWater) water = false;
+    //audioManager.Stop("UseWater");
   }
 
   public void UseTorch()
@@ -95,6 +97,7 @@ public class Inventory : MonoBehaviour
     if (torchActive)
     {
       torchActive = false;
+      audioManager.Stop("TorchLighting");
       audioManager.Stop("TorchBurning");
     }
     else

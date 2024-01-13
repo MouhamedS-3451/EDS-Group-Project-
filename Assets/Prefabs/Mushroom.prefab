@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6720069207812260904}
   - component: {fileID: 1836530563806310217}
   - component: {fileID: 866094687379712171}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: MushroomInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 5415016928467221740}
   - component: {fileID: 4112313525120556833}
   - component: {fileID: 1012411682991748798}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: JumpBoostInteractable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 2592886548559364627}
   - component: {fileID: 8259203317596978233}
   - component: {fileID: 8996709805651586036}
-  m_Layer: 7
+  m_Layer: 28
   m_Name: PlatformHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

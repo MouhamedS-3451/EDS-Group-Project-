@@ -5,6 +5,7 @@ public class PlayerGroundDetection : MonoBehaviour
   [SerializeField] private LayerMask groundLayer;
   private bool isGrounded;
 
+  [HideInInspector]
   public GameObject ground;
 
   // Sets isGrounded = true if colliding with Object that has Layer "Ground"

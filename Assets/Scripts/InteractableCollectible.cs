@@ -28,7 +28,6 @@ public class InteractableCollectible : Interactable
     player.GetComponent<Inventory>().UseWateringCan(wateringTime, true);
     LeanTween.value(gameObject, growStart, growEnd, wateringTime).setOnUpdate(UpdateGrowth);
     GetComponentInChildren<ParticleSystem>().Stop();
-    forceField.SetActive(true);
 
     StartCoroutine(CollectCoroutine());
   }
@@ -36,6 +35,7 @@ public class InteractableCollectible : Interactable
   private IEnumerator CollectCoroutine()
   {
     yield return new WaitForSeconds(0);
+    forceField.SetActive(true);
     player.GetComponent<Inventory>().Collect(collectibleType, collectibleIndex);
     FindObjectOfType<AudioManager>().Play("Collect");
     isCollected = true;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7900117174633751194}
   - component: {fileID: 5269342260358025940}
   - component: {fileID: 7427575546889385937}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage3
   m_TagString: Toggleable
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 2714509434544216641}
   - component: {fileID: 6848981923167719368}
   - component: {fileID: 8094311148092468995}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 4461214918830963649}
   - component: {fileID: 5659611928164924919}
   - component: {fileID: 7354395216157342155}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage7
   m_TagString: Toggleable
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 3375104781682194029}
   - component: {fileID: 8715090966964529475}
   - component: {fileID: 5716085913397299843}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 7202674401898680136}
   - component: {fileID: 2527746004455058018}
   - component: {fileID: 8483572920064852016}
-  m_Layer: 10
+  m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,6 +762,8 @@ MonoBehaviour:
   wateringTime: 2.5
   growthValue: 0.1
   growthMax: 1
+  toggleInstant: 0
+  gameObjectsToToggle: []
 --- !u!114 &8483572920064852016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +788,7 @@ GameObject:
   - component: {fileID: 4369853985655549207}
   - component: {fileID: 4152707660417349773}
   - component: {fileID: 7007209945459654452}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +938,7 @@ GameObject:
   - component: {fileID: 6357061577920967322}
   - component: {fileID: 6027288201090113303}
   - component: {fileID: 5064829500922699369}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1088,7 @@ GameObject:
   - component: {fileID: 4211269723899498254}
   - component: {fileID: 5830632824615226907}
   - component: {fileID: 5174673532239040162}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage9
   m_TagString: Toggleable
   m_Icon: {fileID: 0}
@@ -1236,7 +1238,7 @@ GameObject:
   - component: {fileID: 540990563920584018}
   - component: {fileID: 6631598540367402981}
   - component: {fileID: 1436913328913176494}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1386,7 +1388,7 @@ GameObject:
   - component: {fileID: 849509936279362031}
   - component: {fileID: 4659525178689184457}
   - component: {fileID: 2474439236653472548}
-  m_Layer: 7
+  m_Layer: 29
   m_Name: Foliage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

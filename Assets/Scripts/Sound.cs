@@ -5,6 +5,10 @@ using UnityEngine;
 public class Sound
 {
   public string name;
+
+  [HideInInspector]
+  public AudioMixerGroup mixerGroup;
+
   public enum SoundType { SFX, Music }
   public SoundType type = SoundType.SFX;
 

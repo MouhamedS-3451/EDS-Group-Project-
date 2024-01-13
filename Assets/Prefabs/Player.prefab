@@ -110,9 +110,9 @@ Transform:
   m_GameObject: {fileID: 2011478296321584524}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.074, y: 1.229, z: 0}
-  m_LocalScale: {x: -4, y: 0.4, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.3, y: 0.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5896190090675214962}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,8 +157,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.07627794, g: 0.2924528, b: 0.03724635, a: 1}
+  m_Sprite: {fileID: 21300000, guid: dcd804e911602f84ebc309bb35e53470, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ceilingLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4026533376
 --- !u!1 &6584684030030236569
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +774,9 @@ MonoBehaviour:
   useLean: 1
   leanDegree: 2.5
   onWall: 0
+  platformsLayerMask:
+    serializedVersion: 2
+    m_Bits: 4026531840
 --- !u!114 &5947736978805739495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 64
 --- !u!1 &8104533592632570906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 4026533376
   ground: {fileID: 0}
 --- !u!1 &8906466597553583789
 GameObject:

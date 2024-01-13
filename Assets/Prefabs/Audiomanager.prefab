@@ -94,3 +94,24 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 0
     loop: 0
+  - name: Dive
+    type: 0
+    clip: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: ClimbingVine
+    type: 0
+    clip: {fileID: 8300000, guid: 561199233cf04c84ea360a7df2828ed4, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+  - name: Waterfall
+    type: 0
+    clip: {fileID: 8300000, guid: 561199233cf04c84ea360a7df2828ed4, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1

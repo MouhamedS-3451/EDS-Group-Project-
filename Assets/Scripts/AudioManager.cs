@@ -6,9 +6,24 @@ public class AudioManager : MonoBehaviour
 {
   public Sound[] sounds;
 
+  public AudioMixer mixer;
+
+  [HideInInspector]
+  public AudioMixerGroup masterMixer;
+
+  [HideInInspector]
+  public AudioMixerGroup musicMixer;
+
+  [HideInInspector]
+  public AudioMixerGroup sfxMixer;
+
+
   public static AudioManager instance;
   void Awake()
   {
+    masterMixer = mixer.FindMatchingGroups("Master")[0];
+    musicMixer = mixer.FindMatchingGroups("Music")[0];
+    sfxMixer = mixer.FindMatchingGroups("SFX")[0];
     if (instance == null)
     {
       instance = this;
@@ -18,7 +33,6 @@ public class AudioManager : MonoBehaviour
       Destroy(gameObject);
       return;
     }
-
     DontDestroyOnLoad(gameObject);
   }
 
@@ -40,16 +54,20 @@ public class AudioManager : MonoBehaviour
     {
       if (child.clip == sound.clip) source = child;
     }
-    if (source == null) source = sourceObject.AddComponent<AudioSource>();
+    if (source == null)
+    {
+      source = sourceObject.AddComponent<AudioSource>();
+    }
 
-    // Assign AudioSource properties
+    // Assign/Update AudioSource properties
     source.clip = sound.clip;
     source.volume = sound.volume;
     source.pitch = sound.pitch;
     source.spatialBlend = sound.spatialBlend;
     source.loop = sound.loop;
+    source.outputAudioMixerGroup = sound.type == Sound.SoundType.Music ? musicMixer : sfxMixer;
 
-    source.Play();
+    if (!source.isPlaying) source.Play();
   }
 
   public void Stop(string name) { Stop(name, gameObject); }

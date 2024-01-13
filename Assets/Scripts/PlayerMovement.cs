@@ -26,8 +26,10 @@ public class PlayerMovement : MonoBehaviour
   private float lastPosition;
   private bool onLadder = false;
   public bool onWall = false;
+  public LayerMask platformsLayerMask;
   private bool isCrouching = false;
   private float gravityScale;
+  private AudioManager audioManager;
 
   void Awake()
   {
@@ -37,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
     gravityScale = body.gravityScale;
     transform.Find("PlayerHitboxCrouching").gameObject.SetActive(false);
     animator = transform.GetChild(1).GetComponent<Animator>();
+
+    audioManager = FindObjectOfType<AudioManager>();
   }
 
   void FixedUpdate()
@@ -93,12 +97,14 @@ public class PlayerMovement : MonoBehaviour
       transform.Find("PlayerHitboxCrouching").gameObject.SetActive(false);
     }
 
+    if (IsGrounded() && !IsCrouching() && directionX != 0) audioManager.Play("Run");
+    //else audioManager.Stop("Run");
   }
 
   private void UpdateYMovement()
   {
     GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
-    if (ground != null && ground.layer == 7 && directionY == -1)
+    if (ground != null && (((1 << ground.layer) & platformsLayerMask) != 0) && directionY == -1)
     {
       StartCoroutine(FallThroughPlatform(ground));
     }
@@ -108,10 +114,15 @@ public class PlayerMovement : MonoBehaviour
     {
       body.velocity = new Vector2(body.velocity.x, directionY * climbSpeed);
       body.gravityScale = 0;
+
+      if (directionY != 0) audioManager.Play("ClimbVine");
+      else audioManager.Stop("ClimbVine");
     }
     else
     {
       body.velocity = new Vector2(body.velocity.x, body.velocity.y);
+
+      audioManager.Stop("ClimbVine");
     }
   }
 
