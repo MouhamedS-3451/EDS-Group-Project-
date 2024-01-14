@@ -24,6 +24,9 @@ public class Inventory : MonoBehaviour
   public bool glider = false;
   public bool gliderActive = false;
 
+  public bool[] collectiblesType1;
+  public bool[] collectiblesType2;
+
   private AudioManager audioManager;
 
   public void Awake()
@@ -116,8 +119,10 @@ public class Inventory : MonoBehaviour
 
   public void Collect(int type, int index)
   {
-    Transform image = collectiblesCounter.transform.GetChild(type).GetChild(index);
+    Transform image = collectiblesCounter.transform.GetChild(type-1).GetChild(index);
     Transform animator = image.transform.GetChild(0);
+    if (type == 1) collectiblesType1[index] = true;
+    else if (type == 2) collectiblesType2[index] = true;
 
     image.GetComponent<Image>().color = Color.white;
     
