@@ -124,7 +124,7 @@ public class InteractableTree : Interactable
     foreach (Transform child in transform)
     {
       if (child.tag.CompareTo("Toggleable") == 1) continue;
-      if (child.gameObject.layer != LayerMask.NameToLayer("Platform")) continue;
+      if (child.gameObject.layer != LayerMask.NameToLayer("PlatformLeaves")) continue;
       isGrowing = true;
       child.GetComponent<BoxCollider2D>().enabled = true;
     }

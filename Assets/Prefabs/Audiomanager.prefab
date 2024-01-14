@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3348060082229323009}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 256.27844, y: 89.01695, z: -0.8595005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f36fad47898c04ebf7e35a150e3315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   sounds:
   - name: Collect
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 792bf55e160d37d45a927199e5953395, type: 3}
     volume: 1
@@ -53,6 +55,7 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
   - name: JumpBoost
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 95786d47dd356a94e99dffa219b82fdf, type: 3}
     volume: 1
@@ -60,6 +63,7 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
   - name: TorchLighting
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 50b534f85827681458274214cf08c46d, type: 3}
     volume: 1
@@ -67,6 +71,7 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
   - name: TorchBurning
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 4d2707c48540b1c4e9d9f53e327d91f8, type: 3}
     volume: 1
@@ -74,6 +79,7 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 1
   - name: PlantSeeds
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 17ed70673b50c07498b7fdd23d9ead52, type: 3}
     volume: 1
@@ -81,6 +87,7 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
   - name: FillWater
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 61e8364d6e9d5dc4289e8a1503e35450, type: 3}
     volume: 1
@@ -88,6 +95,7 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
   - name: UseWater
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 862cb0bc4244ccf428be10a9718013fd, type: 3}
     volume: 1
@@ -95,23 +103,46 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
   - name: Dive
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0
     loop: 0
-  - name: ClimbingVine
+  - name: RunSt
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: e031ca5c5a2f8144c9883fa1cfeddc96, type: 3}
+    volume: 0.25
+    pitch: 2.1
+    spatialBlend: 0
+    loop: 0
+  - name: ClimbVine
+    mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 561199233cf04c84ea360a7df2828ed4, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+  - name: Music
+    mixerGroup: {fileID: 0}
+    type: 1
+    clip: {fileID: 8300000, guid: 024150f2362928745a9119ab0e830402, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0
     loop: 1
   - name: Waterfall
+    mixerGroup: {fileID: 0}
     type: 0
-    clip: {fileID: 8300000, guid: 561199233cf04c84ea360a7df2828ed4, type: 3}
+    clip: {fileID: 8300000, guid: 33af9cddc42e7d648b81a520e7424107, type: 3}
     volume: 1
     pitch: 1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 1
+  audioMixer: {fileID: 24100000, guid: 4f2eebd224ccbc243b51d2c64855e4c4, type: 2}
+  mixerGroupMaster: {fileID: 0}
+  mixerGroupMusic: {fileID: 0}
+  mixerGroupSFX: {fileID: 0}
