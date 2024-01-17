@@ -5,7 +5,10 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
 
-  public GameObject pauseMenu;
+  [HideInInspector]
+  public GameManager gameManager;
+
+  public GameObject pauseMenuUI;
 
   [HideInInspector]
   public bool isPaused = false;
@@ -13,7 +16,8 @@ public class PauseMenu : MonoBehaviour
   // Start is called before the first frame update
   void Awake()
   {
-    pauseMenu.SetActive(false);
+    gameManager = FindObjectOfType<GameManager>();
+    pauseMenuUI.SetActive(false);
   }
 
   // Update is called once per frame
@@ -34,21 +38,33 @@ public class PauseMenu : MonoBehaviour
 
   public void Resume()
   {
-    pauseMenu.SetActive(false);
+    pauseMenuUI.SetActive(false);
     Time.timeScale = 1f;
     isPaused = false;
   }
 
-  void Pause()
+  private void Pause()
   {
-    pauseMenu.SetActive(true);
+    pauseMenuUI.SetActive(true);
     Time.timeScale = 0f;
     isPaused = true;
+  }
+
+  public void Restart()
+  {
+    Time.timeScale = 1f;
+    gameManager.LoadScene(gameManager.currentLevel);
   }
 
   public void LoadMenu()
   {
     Time.timeScale = 1f;
-    FindObjectOfType<GameManager>().LoadMenu();
+    gameManager.LoadLevel("MainMenu");
+  }
+
+  public void LoadLevelSelect()
+  {
+    Time.timeScale = 1f;
+    gameManager.LoadLevel("LevelSelect");
   }
 }

@@ -845,7 +845,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4450672105853074307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8242466280627519571}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2159682326106707949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1370,7 @@ GameObject:
   - component: {fileID: 4627183393883236422}
   - component: {fileID: 511244428512596553}
   - component: {fileID: 2512286093705990113}
-  - component: {fileID: 2686513743604288452}
+  - component: {fileID: 8242466280627519571}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1451,7 +1463,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2686513743604288452
+--- !u!114 &8242466280627519571
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1463,7 +1475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9669b134bb066d14b89a68596043df55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 2159682326106707949}
+  gameManager: {fileID: 0}
+  pauseMenuUI: {fileID: 2159682326106707949}
   isPaused: 0
 --- !u!1 &2813498780491982432
 GameObject:
@@ -2285,7 +2298,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2142831540573761557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8242466280627519571}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: LoadLevelSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3692387934467845321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,7 +3111,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2686513743604288452}
+      - m_Target: {fileID: 8242466280627519571}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: LoadMenu
         m_Mode: 1
@@ -3886,7 +3911,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2686513743604288452}
+      - m_Target: {fileID: 8242466280627519571}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -4733,7 +4758,6 @@ MonoBehaviour:
   offset: {x: 0, y: 0}
   lookAheadX: 4
   PosSmoothTime: 0.25
-  inCave: 0
 --- !u!114 &3822103632332518349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5306,7 +5330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pauseed
+  m_text: Paused
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}

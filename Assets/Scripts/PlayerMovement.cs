@@ -1,7 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -97,8 +95,19 @@ public class PlayerMovement : MonoBehaviour
       transform.Find("PlayerHitboxCrouching").gameObject.SetActive(false);
     }
 
-    if (IsGrounded() && !IsCrouching() && directionX != 0) audioManager.Play("Run");
-    //else audioManager.Stop("Run");
+    bool running = false;
+    if (IsGrounded() && !IsCrouching() && directionX != 0) running = true;
+
+    GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
+
+    if (ground == null) return;
+
+    if (running && (ground.layer == 9 || ground.layer == 31)) audioManager.Play("FootstepsStone");
+    else audioManager.Stop("FootstepsStone");
+
+    if (running && (ground.layer == 10 || ground.layer == 30)) audioManager.Play("FootstepsGrass");
+    else audioManager.Stop("FootstepsGrass");
+
   }
 
   private void UpdateYMovement()
