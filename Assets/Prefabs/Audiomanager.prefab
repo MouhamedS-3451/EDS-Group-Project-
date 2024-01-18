@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4834234588528044405}
   - component: {fileID: 5288519379785344475}
   m_Layer: 0
-  m_Name: Audiomanager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 0
     loop: 0
-  - name: RunSt
+  - name: FootstepsStone
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: e031ca5c5a2f8144c9883fa1cfeddc96, type: 3}
@@ -118,6 +118,14 @@ MonoBehaviour:
     pitch: 2.1
     spatialBlend: 0
     loop: 0
+  - name: FootstepsGrass
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: c21ae55c20f15cf489a12d39ce73d21c, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
   - name: ClimbVine
     mixerGroup: {fileID: 0}
     type: 0
@@ -126,13 +134,53 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 0
     loop: 1
-  - name: Music
+  - name: ThemeMainMenu
     mixerGroup: {fileID: 0}
     type: 1
-    clip: {fileID: 8300000, guid: 024150f2362928745a9119ab0e830402, type: 3}
+    clip: {fileID: 8300000, guid: 3e2bb95d9dfecfa429235235604bc14b, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 0
+    loop: 1
+  - name: ThemeLevelSelect
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: c36c1abf72e0c2a469c3b94962dfabf7, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+  - name: ThemeLvl1
+    mixerGroup: {fileID: 0}
+    type: 1
+    clip: {fileID: 8300000, guid: 5a1378f807d1e3743949d288ce3461c0, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+  - name: ThemeLvl2
+    mixerGroup: {fileID: 0}
+    type: 1
+    clip: {fileID: 8300000, guid: e4a8bbedc37df5b4eb28e68fdffcf462, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+  - name: ThemeLvl3
+    mixerGroup: {fileID: 0}
+    type: 1
+    clip: {fileID: 8300000, guid: 9a0b9a6252aa6784c87cf63d29beae96, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
+  - name: ThemeCredits
+    mixerGroup: {fileID: 0}
+    type: 1
+    clip: {fileID: 8300000, guid: 9b19d95596afb7c4ab5ee79d360a1e0e, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 0.57
     loop: 1
   - name: Waterfall
     mixerGroup: {fileID: 0}

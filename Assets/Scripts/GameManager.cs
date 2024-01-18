@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
   void LoadPrefs()
   {
     // Progress
-    if (!PlayerPrefs.HasKey("UnlockedLevel")) PlayerPrefs.SetInt("UnlockedLevel", 0);
+    if (!PlayerPrefs.HasKey("UnlockedLevel")) PlayerPrefs.SetInt("UnlockedLevel", 1);
     unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel");
 
     for (int i = 0; i < unlockedItems.Length; i++)
@@ -148,14 +148,175 @@ public class GameManager : MonoBehaviour
     LoadPrefs();
   }
 
-  public void LoadMenu()
+  public void LoadScene(int level)
   {
-    UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    switch (level)
+    {
+      case 1:
+        StartCoroutine(LoadLevelCoroutine("Level 1"));
+        break;
+      case 2:
+        StartCoroutine(LoadLevelCoroutine("Level 2"));
+        break;
+      case 3:
+        StartCoroutine(LoadLevelCoroutine("Level 3"));
+        break;
+      default:
+        StartCoroutine(LoadLevelCoroutine("LevelSelect"));
+        break;
+    }
   }
+
+  public void LoadLevel(string levelName)
+  {
+    StartCoroutine(LoadLevelCoroutine(levelName));
+  }
+
+  private IEnumerator LoadLevelCoroutine(string levelName)
+  {
+
+
+    var asyncLoad = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(levelName);
+    while (!asyncLoad.isDone)
+    {
+      yield return null;
+    }
+
+    AudioManager audioManager = FindObjectOfType<AudioManager>();
+
+    switch (levelName)
+    {
+      case "Level 1":
+        LoadLevel1(audioManager);
+        break;
+      case "Level 2":
+        LoadLevel2(audioManager);
+        break;
+      case "Level 3":
+        LoadLevel3(audioManager);
+        break;
+      case "MainMenu":
+        LoadMainMenu(audioManager);
+        break;
+      case "LevelSelect":
+        LoadLevelSelect(audioManager);
+        break;
+      case "Credits":
+        LoadCredits(audioManager);
+        break;
+
+
+    }
+  }
+
+  private void LoadLevel1(AudioManager audioManager)
+  {
+
+    audioManager.Play("ThemeLvl1");
+    currentLevel = 1;
+    Inventory inv = LoadInventory();
+  }
+  private void LoadLevel2(AudioManager audioManager)
+  {
+    audioManager.Play("ThemeLvl2");
+    currentLevel = 2;
+    Inventory inv = LoadInventory();
+    inv.torchActive = true;
+  }
+
+  private void LoadLevel3(AudioManager audioManager)
+  {
+    audioManager.Play("ThemeLvl3");
+    currentLevel = 3;
+    Inventory inv = LoadInventory();
+  }
+
+  private void LoadMainMenu(AudioManager audioManager)
+  {
+    audioManager.Play("ThemeMainMenu");
+  }
+
+  private void LoadLevelSelect(AudioManager audioManager)
+  {
+    audioManager.Play("ThemeLevelSelect");
+  }
+
+  private void LoadCredits(AudioManager audioManager)
+  {
+    audioManager.Play("ThemeCredits");
+  }
+
+  private Inventory LoadInventory()
+  {
+    GameObject player = GameObject.Find("Player");
+    Inventory inv = player.GetComponent<Inventory>();
+    inv.wateringCan = unlockedItems[0];
+    inv.torch = true;
+    inv.mushroom = unlockedItems[2];
+    inv.seeds = unlockedItems[3];
+    inv.glider = unlockedItems[4];
+
+    return inv;
+  }
+
+  public void FinishedLevel()
+  {
+    // Fade out music
+    // Fade out color
+    Inventory inv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+
+    unlockedItems[0] = inv.wateringCan;
+    unlockedItems[1] = inv.torch;
+    unlockedItems[2] = inv.mushroom;
+    unlockedItems[3] = inv.seeds;
+    unlockedItems[4] = inv.glider;
+
+    switch (currentLevel)
+    {
+      case 1:
+        for (int i = 0; i < collectiblesLvl1_1.Length; i++)
+        {
+          collectiblesLvl1_1[i] = inv.collectiblesType1[i];
+        }
+        for (int i = 0; i < collectiblesLvl1_2.Length; i++)
+        {
+          collectiblesLvl1_2[i] = inv.collectiblesType2[i];
+        }
+        break;
+      case 2:
+        for (int i = 0; i < collectiblesLvl2_1.Length; i++)
+        {
+          collectiblesLvl2_1[i] = inv.collectiblesType1[i];
+        }
+        for (int i = 0; i < collectiblesLvl2_2.Length; i++)
+        {
+          collectiblesLvl2_2[i] = inv.collectiblesType2[i];
+        }
+        break;
+      case 3:
+        for (int i = 0; i < collectiblesLvl3_1.Length; i++)
+        {
+          collectiblesLvl3_1[i] = inv.collectiblesType1[i];
+        }
+        for (int i = 0; i < collectiblesLvl3_2.Length; i++)
+        {
+          collectiblesLvl3_2[i] = inv.collectiblesType2[i];
+        }
+        break;
+      default:
+        break;
+    }
+
+      UpdatePrefs();
+
+    LoadScene(currentLevel++);
+  }
+
 
 
   void OnApplicationQuit()
   {
+    Debug.Log("SavedOnQuit");
     UpdatePrefs();
 
   }

@@ -4,19 +4,24 @@ using UnityEngine.Rendering.Universal;
 // Camera follows the player with specified offset and delay
 public class CameraFollow : MonoBehaviour
 {
+  GameManager gameManager;
   public Transform target;
   public Vector2 offset;
   public float lookAheadX = 4;
 
   // How long it takes for the camera to catch up to the player
   public float PosSmoothTime = 0.25f;
-  public bool inCave = false;
 
   private Vector3 velocity = Vector3.zero;
 
+  void Start()
+  {
+    gameManager = FindObjectOfType<GameManager>();
+  }
+  
   void FixedUpdate()
   {
-    if (inCave)
+    if (gameManager.currentLevel == 2)
     {
       transform.GetChild(0).gameObject.SetActive(transform.position.y > 175);
       transform.GetChild(1).gameObject.SetActive(transform.position.y > 175);
