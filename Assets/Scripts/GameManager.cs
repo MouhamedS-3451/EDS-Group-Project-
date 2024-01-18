@@ -184,7 +184,6 @@ public class GameManager : MonoBehaviour
     {
       yield return null;
     }
-    Time.timeScale = 1f;
 
     AudioManager audioManager = FindObjectOfType<AudioManager>();
 

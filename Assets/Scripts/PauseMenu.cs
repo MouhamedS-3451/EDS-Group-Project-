@@ -62,11 +62,13 @@ public class PauseMenu : MonoBehaviour
 
   public void LoadMenu()
   {
+    Time.timeScale = 1f;
     levelLoader.LoadLevel("MainMenu");
   }
 
   public void LoadLevelSelect()
   {
+    Time.timeScale = 1f;
     levelLoader.LoadLevel("LevelSelect");
   }
 }
