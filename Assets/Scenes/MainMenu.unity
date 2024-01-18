@@ -535,6 +535,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2109990642}
     m_Modifications:
+    - target: {fileID: 333554075100688272, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_text
+      value: 'Explore the Landscape and help it grow.
+
+
+        If you feel stuck,
+        try to pick up everything you see and use your Items in various places.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 333554075100688272, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 333554075100688272, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 333554075100688272, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 333554075100688272, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+    - target: {fileID: 333554075100688272, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1414853240752781077, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_text
+      value: up/Enter Passage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995114100994035744, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -168
+      objectReference: {fileID: 0}
     - target: {fileID: 3002708767227275295, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
       propertyPath: m_Name
       value: ControlsTooltip
@@ -638,6 +674,34 @@ PrefabInstance:
     - target: {fileID: 4573839171741849241, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193325619772774246, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_text
+      value: Pick up
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830507545366416031, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 6043881594511811183, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_Name
+      value: Pick Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265596450393516820, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_Name
+      value: Description (TMP)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092538589663714968, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -68
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110516996353393851, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110516996353393851, guid: 90b8e35ca5b97794fab904dee1b45d73, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
