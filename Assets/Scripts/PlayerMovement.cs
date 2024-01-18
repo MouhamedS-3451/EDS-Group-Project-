@@ -104,7 +104,6 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject ground = transform.GetComponentInChildren<PlayerGroundDetection>().ground;
 
-    if (ground == null) return;
 
     if (running && (ground.layer == 9 || ground.layer == 31)) audioManager.Play("FootstepsStone", gameObject);
     else audioManager.Stop("FootstepsStone", gameObject);
