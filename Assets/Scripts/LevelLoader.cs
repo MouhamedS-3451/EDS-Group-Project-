@@ -18,7 +18,7 @@ public class LevelLoader : MonoBehaviour
   public void LoadNextLevel()
   {
     string levelName = SceneManager.GetActiveScene().name;
-    string nextLevelName = "";
+    string nextLevelName;
 
     nextLevelName = levelName switch
     {

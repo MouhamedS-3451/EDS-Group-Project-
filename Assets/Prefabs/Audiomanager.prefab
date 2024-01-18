@@ -113,7 +113,7 @@ MonoBehaviour:
   - name: FootstepsStone
     mixerGroup: {fileID: 0}
     type: 0
-    clip: {fileID: 8300000, guid: e031ca5c5a2f8144c9883fa1cfeddc96, type: 3}
+    clip: {fileID: 8300000, guid: fe74ac5ee4c27494b80a64b7f7ff9e93, type: 3}
     volume: 1
     pitch: 2.1
     spatialBlend: 1
