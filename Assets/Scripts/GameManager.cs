@@ -5,8 +5,8 @@ public class GameManager : MonoBehaviour
 {
   public static GameManager instance;
 
-  public int currentLevel = 0;
-  public int unlockedLevel = 0;
+  public string currentLevel = "MainMenu";
+  public int unlockedLevel = 1;
 
   public bool[] unlockedItems = new bool[5];
 
@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     // Audio
     if (!PlayerPrefs.HasKey("VolumeMusic")) PlayerPrefs.SetFloat("VolumeMusic", 0.75f);
     musicVolume = PlayerPrefs.GetFloat("VolumeMusic");
-    Debug.Log(PlayerPrefs.GetFloat("VolumeMusic", 0.75f));
 
     if (!PlayerPrefs.HasKey("VolumeSFX")) PlayerPrefs.SetFloat("VolumeSFX", 0.75f);
     sfxVolume = PlayerPrefs.GetFloat("VolumeSFX");
@@ -142,9 +141,13 @@ public class GameManager : MonoBehaviour
     }
   }
 
-  public void ResetPrefs()
+  public void ResetProgress()
   {
+    float musicVolume = PlayerPrefs.GetFloat("VolumeMusic");
+    float sfxVolume = PlayerPrefs.GetFloat("VolumeSFX");
     PlayerPrefs.DeleteAll();
+    PlayerPrefs.SetFloat("VolumeMusic", musicVolume);
+    PlayerPrefs.SetFloat("VolumeSFX", sfxVolume);
     LoadPrefs();
   }
 
@@ -181,6 +184,7 @@ public class GameManager : MonoBehaviour
     {
       yield return null;
     }
+    Time.timeScale = 1f;
 
     AudioManager audioManager = FindObjectOfType<AudioManager>();
 
@@ -213,13 +217,13 @@ public class GameManager : MonoBehaviour
   {
 
     audioManager.Play("ThemeLvl1");
-    currentLevel = 1;
+    currentLevel = "Level 1";
     Inventory inv = LoadInventory();
   }
   private void LoadLevel2(AudioManager audioManager)
   {
     audioManager.Play("ThemeLvl2");
-    currentLevel = 2;
+    currentLevel = "Level 2";
     Inventory inv = LoadInventory();
     inv.torchActive = true;
   }
@@ -227,7 +231,7 @@ public class GameManager : MonoBehaviour
   private void LoadLevel3(AudioManager audioManager)
   {
     audioManager.Play("ThemeLvl3");
-    currentLevel = 3;
+    currentLevel = "Level 3";
     Inventory inv = LoadInventory();
   }
 
@@ -259,11 +263,15 @@ public class GameManager : MonoBehaviour
     return inv;
   }
 
-  public void FinishedLevel()
+
+
+  public void LevelComplete()
   {
     // Fade out music
     // Fade out color
     Inventory inv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+    unlockedLevel++;
+    if (unlockedLevel > 3) unlockedLevel = 3;
 
     unlockedItems[0] = inv.wateringCan;
     unlockedItems[1] = inv.torch;
@@ -273,7 +281,7 @@ public class GameManager : MonoBehaviour
 
     switch (currentLevel)
     {
-      case 1:
+      case "Level 1":
         for (int i = 0; i < collectiblesLvl1_1.Length; i++)
         {
           collectiblesLvl1_1[i] = inv.collectiblesType1[i];
@@ -283,7 +291,7 @@ public class GameManager : MonoBehaviour
           collectiblesLvl1_2[i] = inv.collectiblesType2[i];
         }
         break;
-      case 2:
+      case "Level 2":
         for (int i = 0; i < collectiblesLvl2_1.Length; i++)
         {
           collectiblesLvl2_1[i] = inv.collectiblesType1[i];
@@ -293,7 +301,7 @@ public class GameManager : MonoBehaviour
           collectiblesLvl2_2[i] = inv.collectiblesType2[i];
         }
         break;
-      case 3:
+      case "Level 3":
         for (int i = 0; i < collectiblesLvl3_1.Length; i++)
         {
           collectiblesLvl3_1[i] = inv.collectiblesType1[i];
@@ -307,9 +315,7 @@ public class GameManager : MonoBehaviour
         break;
     }
 
-      UpdatePrefs();
-
-    LoadScene(currentLevel++);
+    UpdatePrefs();
   }
 
 

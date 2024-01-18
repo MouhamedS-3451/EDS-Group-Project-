@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
 
   [HideInInspector]
   public GameManager gameManager;
+
+  public LevelLoader levelLoader;
 
   public GameObject pauseMenuUI;
 
@@ -17,6 +20,7 @@ public class PauseMenu : MonoBehaviour
   void Awake()
   {
     gameManager = FindObjectOfType<GameManager>();
+    levelLoader = FindObjectOfType<LevelLoader>();
     pauseMenuUI.SetActive(false);
   }
 
@@ -53,18 +57,16 @@ public class PauseMenu : MonoBehaviour
   public void Restart()
   {
     Time.timeScale = 1f;
-    gameManager.LoadScene(gameManager.currentLevel);
+    levelLoader.LoadLevel(SceneManager.GetActiveScene().name);
   }
 
   public void LoadMenu()
   {
-    Time.timeScale = 1f;
-    gameManager.LoadLevel("MainMenu");
+    levelLoader.LoadLevel("MainMenu");
   }
 
   public void LoadLevelSelect()
   {
-    Time.timeScale = 1f;
-    gameManager.LoadLevel("LevelSelect");
+    levelLoader.LoadLevel("LevelSelect");
   }
 }

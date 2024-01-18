@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
   private bool isCrouching = false;
   private float gravityScale;
   private AudioManager audioManager;
+  public bool autoWalk = false;
 
   void Awake()
   {
@@ -45,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
   {
     directionX = active ? Input.GetAxisRaw("Horizontal") : 0;
     directionY = active ? Input.GetAxisRaw("Vertical") : 0;
+
+    if (autoWalk) directionX = 1;
+
 
     ChangeFacingDirection(directionX);
 
@@ -102,11 +106,11 @@ public class PlayerMovement : MonoBehaviour
 
     if (ground == null) return;
 
-    if (running && (ground.layer == 9 || ground.layer == 31)) audioManager.Play("FootstepsStone");
-    else audioManager.Stop("FootstepsStone");
+    if (running && (ground.layer == 9 || ground.layer == 31)) audioManager.Play("FootstepsStone", gameObject);
+    else audioManager.Stop("FootstepsStone", gameObject);
 
-    if (running && (ground.layer == 10 || ground.layer == 30)) audioManager.Play("FootstepsGrass");
-    else audioManager.Stop("FootstepsGrass");
+    if (running && (ground.layer == 10 || ground.layer == 30)) audioManager.Play("FootstepsGrass", gameObject);
+    else audioManager.Stop("FootstepsGrass", gameObject);
 
   }
 

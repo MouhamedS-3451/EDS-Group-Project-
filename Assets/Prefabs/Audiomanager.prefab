@@ -68,7 +68,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 50b534f85827681458274214cf08c46d, type: 3}
     volume: 1
     pitch: 1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 0
   - name: TorchBurning
     mixerGroup: {fileID: 0}
@@ -76,7 +76,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4d2707c48540b1c4e9d9f53e327d91f8, type: 3}
     volume: 1
     pitch: 1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 1
   - name: PlantSeeds
     mixerGroup: {fileID: 0}
@@ -114,17 +114,17 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: e031ca5c5a2f8144c9883fa1cfeddc96, type: 3}
-    volume: 0.25
+    volume: 1
     pitch: 2.1
-    spatialBlend: 0
-    loop: 0
+    spatialBlend: 1
+    loop: 1
   - name: FootstepsGrass
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: c21ae55c20f15cf489a12d39ce73d21c, type: 3}
     volume: 1
     pitch: 1
-    spatialBlend: 0
+    spatialBlend: 1
     loop: 1
   - name: ClimbVine
     mixerGroup: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
     loop: 1
   - name: ThemeLevelSelect
     mixerGroup: {fileID: 0}
-    type: 0
+    type: 1
     clip: {fileID: 8300000, guid: c36c1abf72e0c2a469c3b94962dfabf7, type: 3}
     volume: 1
     pitch: 1

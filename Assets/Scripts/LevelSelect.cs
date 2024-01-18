@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class LevelSelect : MonoBehaviour
 {
   private GameManager gameManager;
+  private LevelLoader levelLoader;
   Transform level1;
   Transform level2;
   Transform level3;
@@ -11,6 +12,7 @@ public class LevelSelect : MonoBehaviour
   void Start()
   {
     gameManager = FindObjectOfType<GameManager>();
+    levelLoader = FindObjectOfType<LevelLoader>();
 
     level1 = GameObject.Find("Level1").transform;
     level2 = GameObject.Find("Level2").transform;
@@ -22,22 +24,19 @@ public class LevelSelect : MonoBehaviour
     if (gameManager.unlockedLevel >= 3) level3.transform.GetChild(5).gameObject.SetActive(false);
 
     SetCollectibleStatus();
-
-
-
   }
 
   void Update()
   {
     if (Input.GetKeyDown(KeyCode.Escape))
     {
-      gameManager.LoadLevel("MainMenu");
+      levelLoader.LoadLevel("MainMenu");
     }
   }
 
   public void LoadLevel(string levelName)
   {
-    gameManager.LoadLevel(levelName);
+    levelLoader.LoadLevel(levelName);
   }
 
   private void SetCollectibleStatus()
@@ -84,6 +83,5 @@ public class LevelSelect : MonoBehaviour
       collectible.GetComponent<Image>().color = Color.black;
     }
   }
-
 
 }

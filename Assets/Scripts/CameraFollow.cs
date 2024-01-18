@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
   public Transform target;
   public Vector2 offset;
   public float lookAheadX = 4;
+  public bool active = true;
 
   // How long it takes for the camera to catch up to the player
   public float PosSmoothTime = 0.25f;
@@ -21,12 +22,14 @@ public class CameraFollow : MonoBehaviour
   
   void FixedUpdate()
   {
-    if (gameManager.currentLevel == 2)
+    if (gameManager.currentLevel.CompareTo("Level 2") == 0)
     {
       transform.GetChild(0).gameObject.SetActive(transform.position.y > 175);
       transform.GetChild(1).gameObject.SetActive(transform.position.y > 175);
       transform.GetChild(3).gameObject.SetActive(transform.position.y <= 175);
     }
+
+    if (!active) return;
 
     float playerDirection = GameObject.Find("Player").GetComponent<PlayerMovement>().GetDirectionX();
 

@@ -30,18 +30,6 @@ public class AudioManager : MonoBehaviour
     mixerGroupMaster = audioMixer.FindMatchingGroups("Master")[0];
     mixerGroupMusic = audioMixer.FindMatchingGroups("Music")[0];
     mixerGroupSFX = audioMixer.FindMatchingGroups("SFX")[0];
-    /*
-    if (instance == null)
-    {
-      instance = this;
-    }
-    else
-    {
-      Destroy(gameObject);
-      return;
-    }
-    DontDestroyOnLoad(gameObject);
-    */
     
     audioMixer.SetFloat("VolumeMusic", Mathf.Log10(gameManager.musicVolume) * 20);
     audioMixer.SetFloat("VolumeSFX", Mathf.Log10(gameManager.sfxVolume) * 20);
