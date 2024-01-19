@@ -818,15 +818,15 @@ MonoBehaviour:
   mushroomKey: 51
   seedsKey: 52
   gliderKey: 304
-  wateringCan: 1
-  water: 1
-  waterLevel: 1
+  wateringCan: 0
+  water: 0
+  waterLevel: 0
   wateringCanActive: 0
-  torch: 1
-  torchActive: 1
+  torch: 0
+  torchActive: 0
   mushroom: 0
-  seeds: 1
-  glider: 1
+  seeds: 0
+  glider: 0
   gliderActive: 0
   collectiblesType1: 000000
   collectiblesType2: 00000000

@@ -51,7 +51,7 @@ MonoBehaviour:
   collectiblesLvl1_2: 
   collectiblesLvl2_1: 000000
   collectiblesLvl2_2: 00000000
-  collectiblesLvl3_1: 
-  collectiblesLvl3_2: 
+  collectiblesLvl3_1: 000000
+  collectiblesLvl3_2: 000000
   musicVolume: 0
   sfxVolume: 0

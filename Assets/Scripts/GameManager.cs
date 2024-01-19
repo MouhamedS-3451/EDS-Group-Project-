@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
     GameObject player = GameObject.Find("Player");
     Inventory inv = player.GetComponent<Inventory>();
     inv.wateringCan = unlockedItems[0];
-    inv.torch = true;
+    inv.torch = unlockedItems[1];
     inv.mushroom = unlockedItems[2];
     inv.seeds = unlockedItems[3];
     inv.glider = unlockedItems[4];
