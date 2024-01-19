@@ -6,6 +6,12 @@ public class ItemGlider : Interactable
 {
   [SerializeField] private GameObject player;
 
+  void Start()
+  {
+    if (player.GetComponent<Inventory>().glider)
+      gameObject.SetActive(false);
+  }
+
   public override void Interact()
   {
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);

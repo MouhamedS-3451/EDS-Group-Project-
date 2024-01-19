@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Portal : Interactable
 {
-  [SerializeField]private bool walkIn = false;
+  [SerializeField] private bool walkIn = false;
   [SerializeField] private KeyCode key = KeyCode.W;
   [SerializeField] private GameObject player;
   [SerializeField] private GameObject destination;
@@ -17,7 +17,7 @@ public class Portal : Interactable
   }
   void Update()
   {
-    if (inRange && Input.GetKeyDown(KeyCode.UpArrow)) Interact();
+    if (inRange && InteractionKey == KeyCode.W && Input.GetKeyDown(KeyCode.UpArrow)) Interact();
   }
 
   public override void InRangeAction()
@@ -39,6 +39,12 @@ public class Portal : Interactable
   void Teleport()
   {
     player.transform.position = destination.transform.position;
-    player.GetComponent<Inventory>().torchActive = player.transform.position.y < 175;
+
+    GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    if (gameManager.currentLevel.Equals("Level 2"))
+    {
+      player.GetComponent<Inventory>().torchActive = player.transform.position.y < 175;
+    }
+
   }
 }

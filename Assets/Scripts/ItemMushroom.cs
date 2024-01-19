@@ -6,6 +6,11 @@ public class ItemMushroom : Interactable
 {
   [SerializeField] private GameObject player;
   
+  void Start()
+  {
+    if (player.GetComponent<Inventory>().mushroom)
+      gameObject.SetActive(false);
+  }
 
   public override void Interact()
   {
