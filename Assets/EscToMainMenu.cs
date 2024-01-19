@@ -7,12 +7,12 @@ public class EscToMainMenu : MonoBehaviour
 {
     [HideInInspector]
 
-    public LevelLoader levelLoader;
+    public LevelLoader LevelLoader;
     
     [HideInInspector]
 
     void Start() {
-        levelLoader = FindObjectOfType<LevelLoader>();
+        LevelLoader = FindObjectOfType<LevelLoader>();
     }
 
     void Update()
