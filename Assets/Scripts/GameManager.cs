@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -186,6 +187,8 @@ public class GameManager : MonoBehaviour
     }
 
     AudioManager audioManager = FindObjectOfType<AudioManager>();
+    audioManager.audioMixer.SetFloat("VolumeMusic", Mathf.Log10(musicVolume) * 20);
+    audioManager.audioMixer.SetFloat("VolumeSFX", Mathf.Log10(sfxVolume) * 20);
 
     switch (levelName)
     {

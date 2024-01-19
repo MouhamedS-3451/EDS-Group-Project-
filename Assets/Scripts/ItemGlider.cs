@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemGlider : Interactable
 {
   [SerializeField] private GameObject player;
+  public GameObject barrier;
 
   void Start()
   {
@@ -17,5 +18,6 @@ public class ItemGlider : Interactable
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
     player.GetComponent<Inventory>().glider = true;
     gameObject.SetActive(false);
+    if (barrier != null) barrier.SetActive(false);
   }
 }

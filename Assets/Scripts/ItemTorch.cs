@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemTorch : Interactable
 {
   [SerializeField] private GameObject player;
+  public GameObject barrier;
 
   void Start()
   {
@@ -18,5 +19,6 @@ public class ItemTorch : Interactable
     player.GetComponent<PlayerMovement>().LookAtTarget(transform.gameObject);
     player.GetComponent<Inventory>().torch = true;
     gameObject.SetActive(false);
+    if (barrier != null) barrier.SetActive(false);
   }
 }
