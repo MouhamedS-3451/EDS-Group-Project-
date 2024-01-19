@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4834234588528044405}
   - component: {fileID: 5288519379785344475}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: Audiomanager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 792bf55e160d37d45a927199e5953395, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     spatialBlend: 0
     loop: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 95786d47dd356a94e99dffa219b82fdf, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     spatialBlend: 0
     loop: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 17ed70673b50c07498b7fdd23d9ead52, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     spatialBlend: 0
     loop: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 61e8364d6e9d5dc4289e8a1503e35450, type: 3}
-    volume: 1
+    volume: 0.05
     pitch: 1
     spatialBlend: 0
     loop: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 862cb0bc4244ccf428be10a9718013fd, type: 3}
-    volume: 1
+    volume: 0.03
     pitch: 1
     spatialBlend: 0
     loop: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
-    volume: 1
+    volume: 0.05
     pitch: 1
     spatialBlend: 0
     loop: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 1
     clip: {fileID: 8300000, guid: 3e2bb95d9dfecfa429235235604bc14b, type: 3}
-    volume: 1
+    volume: 0.06
     pitch: 1
     spatialBlend: 0
     loop: 1
@@ -146,7 +146,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 1
     clip: {fileID: 8300000, guid: c36c1abf72e0c2a469c3b94962dfabf7, type: 3}
-    volume: 1
+    volume: 0.05
     pitch: 1
     spatialBlend: 0
     loop: 1
@@ -154,7 +154,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 1
     clip: {fileID: 8300000, guid: 5a1378f807d1e3743949d288ce3461c0, type: 3}
-    volume: 1
+    volume: 0.03
     pitch: 1
     spatialBlend: 0
     loop: 1
@@ -162,7 +162,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 1
     clip: {fileID: 8300000, guid: e4a8bbedc37df5b4eb28e68fdffcf462, type: 3}
-    volume: 1
+    volume: 0.05
     pitch: 1
     spatialBlend: 0
     loop: 1
@@ -170,7 +170,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 1
     clip: {fileID: 8300000, guid: 9a0b9a6252aa6784c87cf63d29beae96, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     spatialBlend: 0
     loop: 1
@@ -178,7 +178,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 1
     clip: {fileID: 8300000, guid: 9b19d95596afb7c4ab5ee79d360a1e0e, type: 3}
-    volume: 1
+    volume: 0.06
     pitch: 1
     spatialBlend: 0.57
     loop: 1
@@ -186,7 +186,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 33af9cddc42e7d648b81a520e7424107, type: 3}
-    volume: 1
+    volume: 0.05
     pitch: 1
     spatialBlend: 1
     loop: 1
