@@ -21,4 +21,8 @@ public class EscToMainMenu : MonoBehaviour
             LevelLoader.LoadLevel("MainMenu");
         }
     }
+
+    public void LoadLevel(string levelName) {
+        LevelLoader.LoadLevel(levelName);
+    }
 }

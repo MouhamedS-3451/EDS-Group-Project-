@@ -18,7 +18,7 @@ public class InteractableTree : Interactable
   private bool isGrowing = false;
   [SerializeField] private bool toggleInstant = false;
   [SerializeField] private List<GameObject> gameObjectsToToggle;
-  private List<bool> gameObjectsStatus = new List<bool>();
+  private readonly List<bool> gameObjectsStatus = new();
 
   public void Awake()
   {
@@ -38,11 +38,12 @@ public class InteractableTree : Interactable
         child.GetComponent<SpriteRenderer>().material.SetFloat("_Strength", bgStrength);
       }
     }
-
+    
     foreach (GameObject gameObject in gameObjectsToToggle)
     {
       gameObjectsStatus.Add(gameObject.activeSelf);
     }
+    
   }
 
   // Update updates the growth value over time
@@ -72,6 +73,7 @@ public class InteractableTree : Interactable
         else spriteColor.a = growthValue;
 
         gameObjectsToToggle[i].GetComponentInChildren<SpriteRenderer>().color = spriteColor;
+        if (!isGrowing) gameObjectsToToggle[i].SetActive(!gameObjectsStatus[i]);
       }
       catch { }
 
@@ -101,11 +103,15 @@ public class InteractableTree : Interactable
 
     while (isGrowing) yield return null;
 
-
+    /*
     for (int i = 0; i < gameObjectsToToggle.Count; i++)
     {
+      Debug.Log(gameObjectsStatus[i]);
+      Debug.Log(gameObjectsToToggle[i].activeSelf);
       gameObjectsToToggle[i].SetActive(!gameObjectsStatus[i]);
+      Debug.Log(gameObjectsToToggle[i].activeSelf);
     }
+    */
 
 
     // Pan camera back to player

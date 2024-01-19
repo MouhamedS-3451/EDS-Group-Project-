@@ -47,8 +47,8 @@ MonoBehaviour:
   currentLevel: 0
   unlockedLevel: 0
   unlockedItems: 0000000000
-  collectiblesLvl1_1: 
-  collectiblesLvl1_2: 
+  collectiblesLvl1_1: 00
+  collectiblesLvl1_2: 0000
   collectiblesLvl2_1: 000000
   collectiblesLvl2_2: 00000000
   collectiblesLvl3_1: 000000

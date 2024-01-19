@@ -5,7 +5,7 @@ public class LevelFinish : Interactable
 
   void Start()
   {
-    GetComponent<SpriteRenderer>().enabled = false;
+    //GetComponent<SpriteRenderer>().enabled = false;
   }
   
   public override void InRangeAction()

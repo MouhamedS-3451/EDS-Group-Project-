@@ -65,7 +65,8 @@ public class PlayerRespawn : MonoBehaviour
 
     yield return new WaitForSeconds(respawnDelay);
 
-    GetComponent<PlayerMovement>().deceleration = deceleration;
+    //GetComponent<PlayerMovement>().deceleration = deceleration;
+    GetComponent<PlayerMovement>().deceleration = 100f;
     GetComponent<PlayerMovement>().active = true;
     GetComponent<PlayerJumping>().active = true;
     transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>().material = glowMat;

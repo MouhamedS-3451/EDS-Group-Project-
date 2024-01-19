@@ -41,6 +41,8 @@ public class Inventory : MonoBehaviour
       }
     }
 
+    torchActive = false;
+
     audioManager = FindObjectOfType<AudioManager>();
 
   }

@@ -12,6 +12,7 @@ public class InteractableCollectible : Interactable
   [SerializeField] float wateringTime = 1f;
   [SerializeField] GameObject forceField;
   private bool isCollected = false;
+  private readonly float delay = 1f;
 
 
   public void Awake()
@@ -26,15 +27,16 @@ public class InteractableCollectible : Interactable
     if (!player.GetComponent<Inventory>().water || isCollected) return;
 
     player.GetComponent<Inventory>().UseWateringCan(wateringTime, true);
-    LeanTween.value(gameObject, growStart, growEnd, wateringTime).setOnUpdate(UpdateGrowth);
-    GetComponentInChildren<ParticleSystem>().Stop();
+
 
     StartCoroutine(CollectCoroutine());
   }
 
   private IEnumerator CollectCoroutine()
   {
-    yield return new WaitForSeconds(0);
+    yield return new WaitForSeconds(delay);
+    LeanTween.value(gameObject, growStart, growEnd, wateringTime).setOnUpdate(UpdateGrowth);
+    GetComponentInChildren<ParticleSystem>().Stop();
     forceField.SetActive(true);
     player.GetComponent<Inventory>().Collect(collectibleType, collectibleIndex);
     FindObjectOfType<AudioManager>().Play("Collect");

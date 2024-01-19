@@ -218,13 +218,14 @@ public class GameManager : MonoBehaviour
     audioManager.Play("ThemeLvl1");
     currentLevel = "Level 1";
     Inventory inv = LoadInventory();
+    Cursor.visible = false;
   }
   private void LoadLevel2(AudioManager audioManager)
   {
     audioManager.Play("ThemeLvl2");
     currentLevel = "Level 2";
     Inventory inv = LoadInventory();
-    inv.torchActive = true;
+    Cursor.visible = false;
   }
 
   private void LoadLevel3(AudioManager audioManager)
@@ -232,21 +233,25 @@ public class GameManager : MonoBehaviour
     audioManager.Play("ThemeLvl3");
     currentLevel = "Level 3";
     Inventory inv = LoadInventory();
+    Cursor.visible = false;
   }
 
   private void LoadMainMenu(AudioManager audioManager)
   {
     audioManager.Play("ThemeMainMenu");
+    Cursor.visible = true;
   }
 
   private void LoadLevelSelect(AudioManager audioManager)
   {
     audioManager.Play("ThemeLevelSelect");
+    Cursor.visible = true;
   }
 
   private void LoadCredits(AudioManager audioManager)
   {
     audioManager.Play("ThemeCredits");
+    Cursor.visible = true;
   }
 
   private Inventory LoadInventory()
