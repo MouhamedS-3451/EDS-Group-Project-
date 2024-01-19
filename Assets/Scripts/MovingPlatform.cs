@@ -38,4 +38,9 @@ public class MovingPlatform : MonoBehaviour
     collision.transform.parent = null;
 
   }
+
+  public void SetIndex(int index)
+  {
+    i = index;
+  }
 }

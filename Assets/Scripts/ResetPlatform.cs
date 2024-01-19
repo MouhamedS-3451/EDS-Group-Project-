@@ -9,5 +9,7 @@ public class ResetPlatform : Interactable
   {
     platform.speed = 0;
     platform.transform.position = platform.locations[platform.startIndex].position;
+    platform.SetIndex(platform.startIndex);
+
   }
 }
