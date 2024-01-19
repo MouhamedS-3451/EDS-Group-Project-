@@ -50,7 +50,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 792bf55e160d37d45a927199e5953395, type: 3}
-    volume: 0.1
+    volume: 0.2
     pitch: 1
     spatialBlend: 0
     loop: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     type: 0
     clip: {fileID: 8300000, guid: 95786d47dd356a94e99dffa219b82fdf, type: 3}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     spatialBlend: 0
     loop: 0
