@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -222,6 +223,8 @@ public class GameManager : MonoBehaviour
     currentLevel = "Level 1";
     Inventory inv = LoadInventory();
     Cursor.visible = false;
+    GameObject light = GameObject.Find("Main Camera").transform.GetChild(0).gameObject;
+    light.SetActive(true);
   }
   private void LoadLevel2(AudioManager audioManager)
   {
@@ -229,6 +232,8 @@ public class GameManager : MonoBehaviour
     currentLevel = "Level 2";
     Inventory inv = LoadInventory();
     Cursor.visible = false;
+    GameObject light = GameObject.Find("Main Camera").transform.GetChild(0).gameObject;
+    light.SetActive(false);
   }
 
   private void LoadLevel3(AudioManager audioManager)
@@ -237,6 +242,8 @@ public class GameManager : MonoBehaviour
     currentLevel = "Level 3";
     Inventory inv = LoadInventory();
     Cursor.visible = false;
+    GameObject light = GameObject.Find("Main Camera").transform.GetChild(0).gameObject;
+    light.SetActive(true);
   }
 
   private void LoadMainMenu(AudioManager audioManager)
