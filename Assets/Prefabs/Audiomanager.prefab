@@ -51,7 +51,7 @@ MonoBehaviour:
     type: 0
     clip: {fileID: 8300000, guid: 512332698d854ad46949152141795266, type: 3}
     volume: 1
-    pitch: 1
+    pitch: 0.7
     spatialBlend: 1
     loop: 1
   - name: FootstepsStone
