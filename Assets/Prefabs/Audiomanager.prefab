@@ -190,6 +190,14 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 1
     loop: 1
+  - name: CaveFall
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: ac070088c8db966499d80a972a9842ba, type: 3}
+    volume: 0.05
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
   audioMixer: {fileID: 24100000, guid: 4f2eebd224ccbc243b51d2c64855e4c4, type: 2}
   mixerGroupMaster: {fileID: 0}
   mixerGroupMusic: {fileID: 0}
