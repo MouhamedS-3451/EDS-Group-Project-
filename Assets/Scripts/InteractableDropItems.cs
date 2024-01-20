@@ -14,8 +14,10 @@ public class InteractableDropItems : Interactable
     transform.GetChild(0).gameObject.SetActive(true);
 
     AudioManager audioManager = FindObjectOfType<AudioManager>();
-    audioManager.Play("FillWater");
     audioManager.Play("CaveFall");
+
+    audioManager.Play("FillWater");
+    audioManager.Play("Drop Wateringcan");
 
   }
 }

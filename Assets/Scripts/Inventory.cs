@@ -84,7 +84,7 @@ public class Inventory : MonoBehaviour
     transform.GetComponent<PlayerMovement>().active = false;
     transform.GetComponent<PlayerJumping>().active = false;
     wateringCanActive = true;
-    
+
 
     yield return new WaitForSeconds(time);
 
@@ -116,18 +116,27 @@ public class Inventory : MonoBehaviour
   public void UseGlider()
   {
     if (!glider) return;
-    gliderActive = !gliderActive;
+    if (gliderActive)
+    {
+      gliderActive = false;
+      audioManager.Stop("Glider Whoosh", gameObject);
+    }
+    else
+    {
+      gliderActive = true;
+      audioManager.Play("Glider Whoosh", gameObject);
+    }
   }
 
   public void Collect(int type, int index)
   {
-    Transform image = collectiblesCounter.transform.GetChild(type-1).GetChild(index);
+    Transform image = collectiblesCounter.transform.GetChild(type - 1).GetChild(index);
     Transform animator = image.transform.GetChild(0);
     if (type == 1) collectiblesType1[index] = true;
     else if (type == 2) collectiblesType2[index] = true;
 
     image.GetComponent<Image>().color = Color.white;
-    
+
     animator.gameObject.SetActive(true);
   }
 
