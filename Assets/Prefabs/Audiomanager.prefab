@@ -49,7 +49,7 @@ MonoBehaviour:
   - name: FootstepsGrass
     mixerGroup: {fileID: 0}
     type: 0
-    clip: {fileID: 8300000, guid: c21ae55c20f15cf489a12d39ce73d21c, type: 3}
+    clip: {fileID: 8300000, guid: 512332698d854ad46949152141795266, type: 3}
     volume: 1
     pitch: 1
     spatialBlend: 1
