@@ -46,14 +46,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   sounds:
-  - name: Collect
+  - name: FootstepsGrass
     mixerGroup: {fileID: 0}
     type: 0
-    clip: {fileID: 8300000, guid: 792bf55e160d37d45a927199e5953395, type: 3}
-    volume: 0.2
+    clip: {fileID: 8300000, guid: c21ae55c20f15cf489a12d39ce73d21c, type: 3}
+    volume: 1
+    pitch: 1
+    spatialBlend: 1
+    loop: 1
+  - name: FootstepsStone
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: fe74ac5ee4c27494b80a64b7f7ff9e93, type: 3}
+    volume: 1
+    pitch: 2.1
+    spatialBlend: 1
+    loop: 1
+  - name: ClimbVine
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: 561199233cf04c84ea360a7df2828ed4, type: 3}
+    volume: 1
     pitch: 1
     spatialBlend: 0
-    loop: 0
+    loop: 1
+  - name: Glider Whoosh
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: b17553daf2c224f468f3fd14fe0f744d, type: 3}
+    volume: 0.1
+    pitch: 1
+    spatialBlend: 0
+    loop: 1
   - name: JumpBoost
     mixerGroup: {fileID: 0}
     type: 0
@@ -61,6 +85,30 @@ MonoBehaviour:
     volume: 0.3
     pitch: 1
     spatialBlend: 0
+    loop: 0
+  - name: FillWater
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: 61e8364d6e9d5dc4289e8a1503e35450, type: 3}
+    volume: 0.05
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: UseWater
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: 862cb0bc4244ccf428be10a9718013fd, type: 3}
+    volume: 0.03
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: Drop Wateringcan
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: 35167e937bfded444a8b8e8e42876254, type: 3}
+    volume: 0.05
+    pitch: 1
+    spatialBlend: 1
     loop: 0
   - name: TorchLighting
     mixerGroup: {fileID: 0}
@@ -86,22 +134,22 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 0
     loop: 0
-  - name: FillWater
+  - name: Collect
     mixerGroup: {fileID: 0}
     type: 0
-    clip: {fileID: 8300000, guid: 61e8364d6e9d5dc4289e8a1503e35450, type: 3}
+    clip: {fileID: 8300000, guid: 792bf55e160d37d45a927199e5953395, type: 3}
+    volume: 0.2
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+  - name: Waterfall
+    mixerGroup: {fileID: 0}
+    type: 0
+    clip: {fileID: 8300000, guid: 33af9cddc42e7d648b81a520e7424107, type: 3}
     volume: 0.05
     pitch: 1
-    spatialBlend: 0
-    loop: 0
-  - name: UseWater
-    mixerGroup: {fileID: 0}
-    type: 0
-    clip: {fileID: 8300000, guid: 862cb0bc4244ccf428be10a9718013fd, type: 3}
-    volume: 0.03
-    pitch: 1
-    spatialBlend: 0
-    loop: 0
+    spatialBlend: 1
+    loop: 1
   - name: Dive
     mixerGroup: {fileID: 0}
     type: 0
@@ -110,30 +158,6 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 0
     loop: 0
-  - name: FootstepsStone
-    mixerGroup: {fileID: 0}
-    type: 0
-    clip: {fileID: 8300000, guid: fe74ac5ee4c27494b80a64b7f7ff9e93, type: 3}
-    volume: 1
-    pitch: 2.1
-    spatialBlend: 1
-    loop: 1
-  - name: FootstepsGrass
-    mixerGroup: {fileID: 0}
-    type: 0
-    clip: {fileID: 8300000, guid: c21ae55c20f15cf489a12d39ce73d21c, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 1
-    loop: 1
-  - name: ClimbVine
-    mixerGroup: {fileID: 0}
-    type: 0
-    clip: {fileID: 8300000, guid: 561199233cf04c84ea360a7df2828ed4, type: 3}
-    volume: 1
-    pitch: 1
-    spatialBlend: 0
-    loop: 1
   - name: ThemeMainMenu
     mixerGroup: {fileID: 0}
     type: 1
@@ -149,6 +173,14 @@ MonoBehaviour:
     volume: 0.05
     pitch: 1
     spatialBlend: 0
+    loop: 1
+  - name: ThemeCredits
+    mixerGroup: {fileID: 0}
+    type: 1
+    clip: {fileID: 8300000, guid: 9b19d95596afb7c4ab5ee79d360a1e0e, type: 3}
+    volume: 0.06
+    pitch: 1
+    spatialBlend: 0.57
     loop: 1
   - name: ThemeLvl1
     mixerGroup: {fileID: 0}
@@ -174,21 +206,13 @@ MonoBehaviour:
     pitch: 1
     spatialBlend: 0
     loop: 1
-  - name: ThemeCredits
+  - name: ThemeLvl2Surface
     mixerGroup: {fileID: 0}
     type: 1
-    clip: {fileID: 8300000, guid: 9b19d95596afb7c4ab5ee79d360a1e0e, type: 3}
-    volume: 0.06
+    clip: {fileID: 8300000, guid: fec7a193d5a3c5147af6f67db2210646, type: 3}
+    volume: 0.1
     pitch: 1
-    spatialBlend: 0.57
-    loop: 1
-  - name: Waterfall
-    mixerGroup: {fileID: 0}
-    type: 0
-    clip: {fileID: 8300000, guid: 33af9cddc42e7d648b81a520e7424107, type: 3}
-    volume: 0.05
-    pitch: 1
-    spatialBlend: 1
+    spatialBlend: 0
     loop: 1
   - name: CaveFall
     mixerGroup: {fileID: 0}
