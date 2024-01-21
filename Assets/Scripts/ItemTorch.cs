@@ -13,6 +13,11 @@ public class ItemTorch : Interactable
       gameObject.SetActive(false);
   }
 
+  void Update()
+  {
+    if (GameObject.Find("Player").GetComponent<Inventory>().torch)
+      barrier.SetActive(false);
+  }
 
   public override void Interact()
   {
