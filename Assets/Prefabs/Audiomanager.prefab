@@ -57,9 +57,9 @@ MonoBehaviour:
   - name: FootstepsStone
     mixerGroup: {fileID: 0}
     type: 0
-    clip: {fileID: 8300000, guid: fe74ac5ee4c27494b80a64b7f7ff9e93, type: 3}
+    clip: {fileID: 8300000, guid: d9d34285b18bce54390feda1fd52d6b8, type: 3}
     volume: 1
-    pitch: 2.1
+    pitch: 1
     spatialBlend: 1
     loop: 1
   - name: ClimbVine
@@ -73,11 +73,11 @@ MonoBehaviour:
   - name: Glider Whoosh
     mixerGroup: {fileID: 0}
     type: 0
-    clip: {fileID: 8300000, guid: b17553daf2c224f468f3fd14fe0f744d, type: 3}
-    volume: 0.1
+    clip: {fileID: 8300000, guid: 9e4fa81eb9ac83b4787da9b6d2705f9b, type: 3}
+    volume: 0.07
     pitch: 1
     spatialBlend: 0
-    loop: 1
+    loop: 0
   - name: JumpBoost
     mixerGroup: {fileID: 0}
     type: 0
